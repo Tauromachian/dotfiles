@@ -1,5 +1,10 @@
 !#/bin/bash
 
+#Install timeshift
+sudo add-apt-repository ppa:teejee2008/ppa
+sudo apt-get update
+sudo apt-get install timeshift -y
+
 #Install docker
 sudo apt-get update
 
