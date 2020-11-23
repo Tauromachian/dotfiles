@@ -91,13 +91,13 @@ sudo apt install -y lutris
 #Flatpak applications
 flatpak install flathub org.telegram.desktop
 flatpak install flathub org.videolan.VLC
-flatpak install flathub com.visualstudio.code
 flatpak install flathub com.obsproject.Studio
 flatpak install flathub org.shotcut.Shotcut
 flatpak install flathub nl.hjdskes.gcolor3
 flatpak install flathub com.calibre_ebook.calibre
 flatpak install flathub org.godotengine.Godot
 flatpak install flathub com.valvesoftware.Steam
+flatpak install flathub org.remmina.Remmina
 
 #Snap applications
 sudo snap install insomnia
