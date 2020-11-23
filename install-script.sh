@@ -89,15 +89,15 @@ sudo apt install -y lutris
 #sudo snap install code --classic
 
 #Flatpak applications
-flatpak install flathub org.telegram.desktop
-flatpak install flathub org.videolan.VLC
-flatpak install flathub com.obsproject.Studio
-flatpak install flathub org.shotcut.Shotcut
-flatpak install flathub nl.hjdskes.gcolor3
-flatpak install flathub com.calibre_ebook.calibre
-flatpak install flathub org.godotengine.Godot
-flatpak install flathub com.valvesoftware.Steam
-flatpak install flathub org.remmina.Remmina
+flatpak install flathub org.telegram.desktop -y
+flatpak install flathub org.videolan.VLC -y
+flatpak install flathub com.obsproject.Studio -y
+flatpak install flathub org.shotcut.Shotcut -y
+flatpak install flathub nl.hjdskes.gcolor3 -y
+flatpak install flathub com.calibre_ebook.calibre -y
+flatpak install flathub org.godotengine.Godot -y
+flatpak install flathub com.valvesoftware.Steam -y
+flatpak install flathub org.remmina.Remmina -y
 
 #Snap applications
 sudo snap install insomnia
