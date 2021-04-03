@@ -78,10 +78,6 @@ sudo add-apt-repository ppa:lutris-team/lutris
 sudo apt update
 sudo apt install -y lutris
 
-#Snap applications
-#sudo snap install telegram-desktop
-#sudo snap install vlc
-#sudo snap install code --classic
 
 #Flatpak applications
 flatpak install flathub org.telegram.desktop
@@ -94,6 +90,9 @@ flatpak install flathub org.godotengine.Godot
 flatpak install flathub com.valvesoftware.Steam
 
 #Snap applications
+#sudo snap install telegram-desktop
+#sudo snap install vlc
+#sudo snap install code --classic
 sudo snap install insomnia
 sudo snap install insomnia-designer
 
