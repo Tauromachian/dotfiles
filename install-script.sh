@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#Install timeshift
+sudo add-apt-repository ppa:teejee2008/ppa
+sudo apt-get update
+sudo apt-get install timeshift -y
+
 #Install docker
 # sudo apt-get update
 
@@ -28,7 +33,7 @@ sudo apt-get -y install podman
 echo alias docker=podman > ~/.bash_aliases
 
 #Install node
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 #Install composer
@@ -84,14 +89,14 @@ sudo apt install -y lutris
 
 
 #Flatpak applications
-flatpak install flathub org.telegram.desktop
-flatpak install flathub org.videolan.VLC
-flatpak install flathub com.obsproject.Studio
-flatpak install flathub org.shotcut.Shotcut
-flatpak install flathub nl.hjdskes.gcolor3
-flatpak install flathub com.calibre_ebook.calibre
-flatpak install flathub org.godotengine.Godot
-flatpak install flathub com.valvesoftware.Steam
+flatpak install flathub org.telegram.desktop -y
+flatpak install flathub org.videolan.VLC -y
+flatpak install flathub com.obsproject.Studio -y
+flatpak install flathub org.shotcut.Shotcut -y
+flatpak install flathub nl.hjdskes.gcolor3 -y
+flatpak install flathub com.calibre_ebook.calibre -y
+flatpak install flathub org.godotengine.Godot -y
+flatpak install flathub com.valvesoftware.Steam -y
 
 #Snap applications
 #sudo snap install telegram-desktop
