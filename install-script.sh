@@ -86,7 +86,6 @@ sudo apt install -y lutris
 #Flatpak applications
 flatpak install flathub org.telegram.desktop
 flatpak install flathub org.videolan.VLC
-flatpak install flathub com.visualstudio.code
 flatpak install flathub com.obsproject.Studio
 flatpak install flathub org.shotcut.Shotcut
 flatpak install flathub nl.hjdskes.gcolor3
