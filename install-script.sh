@@ -92,7 +92,7 @@ flatpak install flathub com.valvesoftware.Steam
 #Snap applications
 #sudo snap install telegram-desktop
 #sudo snap install vlc
-#sudo snap install code --classic
+sudo snap install code --classic
 sudo snap install insomnia
 sudo snap install insomnia-designer
 
