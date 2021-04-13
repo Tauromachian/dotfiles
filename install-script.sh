@@ -89,7 +89,6 @@ sudo apt install -y lutris
 #sudo snap install code --classic
 
 #Flatpak applications
-flatpak install flathub org.telegram.desktop -y
 flatpak install flathub org.videolan.VLC -y
 flatpak install flathub com.obsproject.Studio -y
 flatpak install flathub org.shotcut.Shotcut -y
@@ -102,4 +101,5 @@ flatpak install flathub org.remmina.Remmina -y
 #Snap applications
 sudo snap install insomnia
 sudo snap install insomnia-designer
-
+sudo snap install telegram-desktop
+sudo snap install discord
