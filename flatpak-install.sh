@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 #Install flatpak
 sudo apt install flatpak

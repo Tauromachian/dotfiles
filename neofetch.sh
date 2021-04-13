@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 #Install neofetch
 sudo add-apt-repository ppa:dawidd0811/neofetch

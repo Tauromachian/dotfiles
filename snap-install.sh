@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 #Install flatpak
 sudo rm /etc/apt/preferences.d/nosnap.pref
