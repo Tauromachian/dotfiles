@@ -98,7 +98,6 @@ flatpak install flathub org.godotengine.Godot -y
 flatpak install flathub com.valvesoftware.Steam -y
 
 #Snap applications
-#sudo snap install telegram-desktop
 #sudo snap install vlc
 sudo snap install code --classic
 sudo snap install insomnia
