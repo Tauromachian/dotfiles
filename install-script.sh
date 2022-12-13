@@ -32,10 +32,6 @@ sudo apt-get update
 sudo apt-get -y install podman
 echo alias docker=podman > ~/.bash_aliases
 
-#Install node
-curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
 #Install composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === '795f976fe0ebd8b75f26a6dd68f78fd3453ce79f32ecb33e7fd087d39bfeb978342fb73ac986cd4f54edd0dc902601dc') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -47,15 +43,8 @@ sudo npm i -g @vue/cli
 sudo npm i -g npm
 sudo npm install -g heroku
 
-#Install Windscribe
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key FDC247B7
-echo 'deb https://repo.windscribe.com/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/windscribe-repo.list
-sudo apt-get update
-sudo apt-get install -y windscribe-cli
 
 #Install brave web browser
-sudo apt install -y apt-transport-https curl
-
 curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
 
 echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
@@ -87,20 +76,17 @@ sudo add-apt-repository ppa:lutris-team/lutris
 sudo apt update
 sudo apt install -y lutris
 
-
+z
 #Flatpak applications
 flatpak install flathub org.videolan.VLC -y
 flatpak install flathub com.obsproject.Studio -y
 flatpak install flathub org.shotcut.Shotcut -y
 flatpak install flathub nl.hjdskes.gcolor3 -y
 flatpak install flathub com.calibre_ebook.calibre -y
-flatpak install flathub org.godotengine.Godot -y
 flatpak install flathub com.valvesoftware.Steam -y
+flatpak install flathub org.telegram.desktop
 
 #Snap applications
 #sudo snap install vlc
-sudo snap install code --classic
 sudo snap install insomnia
-sudo snap install insomnia-designer
-sudo snap install telegram-desktop
 sudo snap install discord
