@@ -1,0 +1,14 @@
+[font]
+size = 13
+[font.normal]
+family = "CaskaydiaCove Nerd Font Mono"
+[shell]
+program = "tmux"
+[[keyboard.bindings]]
+key = "("
+mods = "Control|Shift"
+chars = "\uE000"
+[[keyboard.bindings]]
+key = ")"
+mods = "Control|Shift"
+chars = "\uE001"
