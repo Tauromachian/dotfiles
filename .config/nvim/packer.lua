@@ -43,4 +43,12 @@ return require('packer').startup(function(use)
             'nvim-lua/plenary.nvim'
         }
     }
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+            opt = true
+        },
+    }
 end)
