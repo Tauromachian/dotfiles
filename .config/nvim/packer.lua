@@ -53,4 +53,6 @@ return require('packer').startup(function(use)
     }
 
     use 'rebelot/kanagawa.nvim'
+
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 end)
