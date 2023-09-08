@@ -4,6 +4,8 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    use 'kyazdani42/nvim-web-devicons'
+
     use {
 
 	    'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -54,5 +56,8 @@ return require('packer').startup(function(use)
 
     use 'rebelot/kanagawa.nvim'
 
-    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+    use {
+        'akinsho/bufferline.nvim',
+        tag = "*",
+        requires = { 'nvim-tree/nvim-web-devicons' }}
 end)
