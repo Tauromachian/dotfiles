@@ -51,4 +51,6 @@ return require('packer').startup(function(use)
             opt = true
         },
     }
+
+    use 'rebelot/kanagawa.nvim'
 end)
