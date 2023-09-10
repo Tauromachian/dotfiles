@@ -5,6 +5,7 @@ lsp.ensure_installed({
   'tsserver',
   'eslint',
   'volar',
+    'astro'
 })
 
 
