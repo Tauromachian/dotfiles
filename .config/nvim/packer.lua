@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},     -- Required
         }
     }
+    -- Both packages handle autoclosing pairs like () or {}
     use 'tpope/vim-surround'
     use "windwp/nvim-autopairs"
 
