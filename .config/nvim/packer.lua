@@ -6,14 +6,12 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     -- Icons for other plugins to use
     use 'nvim-tree/nvim-web-devicons'
+    use 'nvim-lua/plenary.nvim'
 
     -- UTILS --
     -- This is similar to what Ctrl - P does for VSCode
     use {
-
 	    'nvim-telescope/telescope.nvim', tag = '0.1.2',
-	    -- or                            , branch = '0.1.x',
-	    requires = { {'nvim-lua/plenary.nvim'} }
     }
     -- Code highligting
     use {
@@ -43,29 +41,20 @@ return require('packer').startup(function(use)
     -- Git helper. It:
     -- Shows lines that have been changed.
     -- Gives you a way to stage changes right on the spot
-    use {
-        'tanvirtin/vgit.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
-        }
-    }
+    use 'tanvirtin/vgit.nvim'
     -- Adds a visuals to handle changes
     -- Also gives all git commands inside Neovim
     use 'tpope/vim-fugitive'
 
     -- VISUALS --
     -- A pretty and useful status line
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
+    use 'nvim-lualine/lualine.nvim'
     -- Theme
     use 'rebelot/kanagawa.nvim'
     -- Visual helper for the buffers (shows them as tabs)
     use {
         'akinsho/bufferline.nvim',
         tag = "*",
-        requires = { 'nvim-tree/nvim-web-devicons' }
     }
     -- Shows files sidebar
     use 'nvim-tree/nvim-tree.lua'
