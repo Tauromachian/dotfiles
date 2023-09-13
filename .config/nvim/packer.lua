@@ -42,7 +42,8 @@ return require('packer').startup(function(use)
     -- Git helper. It:
     -- Shows lines that have been changed.
     -- Gives you a way to stage changes right on the spot
-    use 'tanvirtin/vgit.nvim'
+    -- use 'tanvirtin/vgit.nvim'
+    use 'lewis6991/gitsigns.nvim'
     -- Adds a visuals to handle changes
     -- Also gives all git commands inside Neovim
     use 'tpope/vim-fugitive'
