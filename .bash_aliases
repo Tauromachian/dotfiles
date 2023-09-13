@@ -5,7 +5,7 @@ alias code="flatpak run com.visualstudio.code"
 alias docker=podman
 alias docker-compose=podman-compose
 
-alias bun="docker run --network host --tty --rm -v $(pwd):/app -w /app localhost/oven/bun"
+alias bun="docker run --network host --interactive --tty --rm -v $(pwd):/app -w /app localhost/oven/bun"
 alias nr="npm run"
 alias ni="npm install"
 alias y="yarn"
