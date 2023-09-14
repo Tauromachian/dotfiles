@@ -5,7 +5,8 @@ lsp.ensure_installed({
     'tsserver',
     'eslint',
     'volar',
-    'astro'
+    'astro',
+    'intelephense'
 })
 
 
@@ -26,6 +27,7 @@ cmp.setup({
 
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig.intelephense.setup{}
 
 lsp.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
