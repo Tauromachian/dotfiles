@@ -29,3 +29,5 @@ require'nvim-treesitter.configs'.setup {
         vue = "javascript",
     },
 }
+
+require('nvim-ts-autotag').setup()
