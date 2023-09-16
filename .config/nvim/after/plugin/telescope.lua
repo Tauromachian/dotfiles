@@ -5,6 +5,7 @@ vim.keymap.set('n', '<leader>ts', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
+-- The code bellow opens in nvim tree the file location after the same is found in telescope
 local actions = require('telescope.actions')
 require('telescope').setup {
     defaults = {
