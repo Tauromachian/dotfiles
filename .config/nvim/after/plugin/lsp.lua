@@ -6,7 +6,9 @@ lsp.ensure_installed({
     'eslint',
     'volar',
     'astro',
-    'intelephense'
+    'intelephense',
+    'html',
+    'emmet_ls'
 })
 
 
