@@ -18,4 +18,6 @@ vim.opt.scrolloff = 8
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.api.nvim_set_keymap('n', '', ':bnext<CR>', { noremap = true, silent = true })
+
 vim.cmd("colorscheme kanagawa")
