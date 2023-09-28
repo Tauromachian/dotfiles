@@ -31,6 +31,15 @@ local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 lspconfig.intelephense.setup {}
 
+local clients_excluded_for_format = {
+    tsserver = true,
+    eslint = true,
+    volar = true,
+    astro = true,
+    html = true,
+    emmet_ls = true
+}
+
 lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
@@ -38,7 +47,15 @@ lsp.on_attach(function(client, bufnr)
 
     vim.api.nvim_create_autocmd('BufWritePre', {
         callback = function()
-            vim.lsp.buf.format()
+            if vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+                return
+            end
+
+            local can_format = not clients_excluded_for_format[client.name]
+
+            if can_format then
+                vim.lsp.buf.format()
+            end
         end
     })
 end)
