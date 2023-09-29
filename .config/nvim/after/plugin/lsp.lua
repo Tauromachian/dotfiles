@@ -29,7 +29,29 @@ cmp.setup({
 
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-lspconfig.intelephense.setup {}
+lspconfig.intelephense.setup {
+    filetypes = { 'php' }
+}
+lspconfig.volar.setup {
+    on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = false
+    end
+}
+
+lspconfig.eslint.setup {
+    on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = false
+    end
+}
+
+lspconfig.emmet_ls.setup {
+    on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = false
+    end
+}
 
 local clients_excluded_for_format = {
     tsserver = true,
