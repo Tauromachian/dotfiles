@@ -14,9 +14,10 @@ require('telescope').setup {
             i = {
                 ["<CR>"] = function(prompt_bufnr)
                     actions.select_default(prompt_bufnr)
+                    vim.cmd(":NvimTreeCollapseKeepBuffers")
+                    vim.cmd(":NvimTreeClose")
                     vim.cmd(":NvimTreeFindFile")
                     vim.api.nvim_input('<CR>')
-                    vim.cmd(":NvimTreeCollapseKeepBuffers")
                 end,
             },
         },
