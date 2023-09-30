@@ -29,5 +29,5 @@ require('formatter').setup {
 
 vim.cmd [[augroup FormatAutogroup]]
 vim.cmd [[autocmd!]]
-vim.cmd [[autocmd BufWritePost *.js,*.vue,*.json,*.html,*.astro,*.css,*.scss,*.css FormatWrite]]
+vim.cmd [[autocmd BufWritePost *.js,*.vue,*.json,*.html,*.astro,*.css,*.scss,*.css,*.mjs FormatWrite]]
 vim.cmd [[augroup END]]
