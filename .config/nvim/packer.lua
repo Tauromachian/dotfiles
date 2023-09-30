@@ -62,5 +62,5 @@ return require('packer').startup(function(use)
     -- Shows files sidebar
     use 'nvim-tree/nvim-tree.lua'
 
-    use 'sbdchd/neoformat'use { 'mhartington/formatter.nvim' }
+    use 'mhartington/formatter.nvim '
 end)
