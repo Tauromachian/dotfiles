@@ -22,6 +22,7 @@ cmp.setup({
     },
     -- Sets the key Enter to select completion
     mapping = {
+        ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
     }
 })
