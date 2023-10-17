@@ -1,7 +1,14 @@
 local lsp = require('lsp-zero').preset({})
 local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    },
     -- Preselect first item from autocompletion
     preselect = 'item',
     completion = {
@@ -11,6 +18,8 @@ cmp.setup({
     mapping = {
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<Tab>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
     }
 })
 
