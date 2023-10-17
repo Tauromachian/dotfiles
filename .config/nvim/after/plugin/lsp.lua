@@ -1,17 +1,4 @@
 local lsp = require('lsp-zero').preset({})
-
-lsp.ensure_installed({
-    -- Replace these with whatever servers you want to install
-    'tsserver',
-    'eslint',
-    'volar',
-    'astro',
-    'intelephense',
-    'html',
-    'emmet_ls'
-})
-
-
 local cmp = require('cmp')
 
 cmp.setup({
