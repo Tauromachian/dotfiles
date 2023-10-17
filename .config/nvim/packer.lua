@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
         }
     }
     use "rafamadriz/friendly-snippets"
+    use { 'saadparwaiz1/cmp_luasnip' }
 
     -- Both packages handle autoclosing pairs like () or {}
     use 'tpope/vim-surround'
