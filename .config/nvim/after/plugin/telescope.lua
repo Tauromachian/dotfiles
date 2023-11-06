@@ -18,5 +18,6 @@ require('telescope').setup {
                 end,
             },
         },
+        layout_strategy = vim.o.lines > 70 and 'vertical' or 'horizontal',
     },
 }
