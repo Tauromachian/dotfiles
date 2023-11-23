@@ -24,6 +24,7 @@ require('formatter').setup {
         yaml = { prettier },
         graphql = { prettier },
         html = { prettier },
+        astro = { prettier }
     }
 }
 
