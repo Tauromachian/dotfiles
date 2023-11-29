@@ -1,3 +1,5 @@
+vim.o.termguicolors = true
+
 vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -18,12 +20,6 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 
 vim.opt.clipboard = "unnamedplus"
-
-if vim.fn.has('termguicolors') == 1 then
-    vim.opt.termguicolors = true
-    vim.cmd [[let &t_8f="\e[38;2;%lu;%lu;%lum"]]
-    vim.cmd [[let &t_8b="\e[48;2;%lu;%lu;%lum"]]
-end
 
 
 -- Remaps
