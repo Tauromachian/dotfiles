@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.opt.termguicolors = true
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -25,3 +24,9 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+if vim.fn.has('termguicolors') == 1 then
+    vim.opt.termguicolors = true
+    vim.cmd [[let &t_8f="\e[38;2;%lu;%lu;%lum"]]
+    vim.cmd [[let &t_8b="\e[48;2;%lu;%lu;%lum"]]
+end
