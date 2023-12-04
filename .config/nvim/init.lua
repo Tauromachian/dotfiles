@@ -20,6 +20,7 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 
 vim.opt.clipboard = "unnamedplus"
+vim.opt.wrap = false
 
 -- Spell checking
 vim.opt.spell = true
