@@ -65,7 +65,7 @@ return require('packer').startup(function(use)
     -- Shows files sidebar
     use 'nvim-tree/nvim-tree.lua'
 
-    use 'mhartington/formatter.nvim'
+    use 'stevearc/conform.nvim'
 
     use 'ThePrimeagen/harpoon'
     use 'ThePrimeagen/vim-be-good'
