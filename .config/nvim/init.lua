@@ -21,6 +21,9 @@ vim.opt.scrolloff = 8
 
 vim.opt.clipboard = "unnamedplus"
 
+-- Spell checking
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
 
 -- Remaps
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
