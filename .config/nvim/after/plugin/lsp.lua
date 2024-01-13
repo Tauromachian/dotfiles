@@ -25,39 +25,13 @@ cmp.setup({
 
 
 local lspconfig = require('lspconfig')
+
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-lspconfig.intelephense.setup {
-    filetypes = { 'php' }
-}
-lspconfig.volar.setup {
-    on_init = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentFormattingRangeProvider = false
-    end
-}
-
-lspconfig.eslint.setup {
-    on_init = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentFormattingRangeProvider = false
-    end
-}
-
-lspconfig.emmet_ls.setup {
-    on_init = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentFormattingRangeProvider = false
-    end
-}
-
-local clients_excluded_for_format = {
-    tsserver = true,
-    eslint = true,
-    volar = true,
-    astro = true,
-    html = true,
-    emmet_ls = true
-}
+lspconfig.intelephense.setup {}
+lspconfig.astro.setup {}
+lspconfig.volar.setup {}
+lspconfig.eslint.setup {}
+lspconfig.emmet_ls.setup {}
 
 lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
@@ -65,17 +39,9 @@ lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
 
     vim.api.nvim_create_autocmd('BufWritePre', {
-        pattern = '*.lua',
+        pattern = '*.lua,*.php,*.astro',
         callback = function()
-            if vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
-                return
-            end
-
-            local can_format = not clients_excluded_for_format[client.name]
-
-            if can_format then
-                vim.lsp.buf.format()
-            end
+            vim.lsp.buf.format()
         end
     })
 end)
