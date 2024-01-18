@@ -5,6 +5,8 @@ local action_state = require('telescope.actions.state')
 local buffer_searcher = function()
     builtin.buffers {
         sort_mru = true,
+        ignore_current_buffer = true,
+        show_all_buffers = false,
         attach_mappings = function(prompt_bufnr, map)
             local delete_buf = function()
                 local selection = action_state.get_selected_entry()
