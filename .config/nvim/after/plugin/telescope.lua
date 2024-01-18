@@ -4,6 +4,7 @@ local action_state = require('telescope.actions.state')
 -- This function allows to close buffers on the buffer search.
 local buffer_searcher = function()
     builtin.buffers {
+        sort_mru = true,
         attach_mappings = function(prompt_bufnr, map)
             local delete_buf = function()
                 local selection = action_state.get_selected_entry()
