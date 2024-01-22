@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'
 
     -- UTILS --
-    -- This is similar to what Ctrl - P does for VSCode
+    -- Fuzzy search
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
     }
