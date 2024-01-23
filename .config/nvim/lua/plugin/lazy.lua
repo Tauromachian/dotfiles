@@ -46,5 +46,7 @@ require("lazy").setup({
     {
       'stevearc/conform.nvim',
       opts = {},
-    }
+    },
+
+    'rebelot/kanagawa.nvim'
 })
