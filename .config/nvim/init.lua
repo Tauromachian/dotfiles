@@ -1,3 +1,5 @@
+vim.opt.runtimepath:append('~/.config/nvim/lua')
+
 vim.o.termguicolors = true
 
 vim.g.mapleader = " "
