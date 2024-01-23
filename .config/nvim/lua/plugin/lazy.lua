@@ -48,5 +48,6 @@ require("lazy").setup({
       opts = {},
     },
 
+    'nvim-treesitter/nvim-treesitter',
     'rebelot/kanagawa.nvim'
 })
