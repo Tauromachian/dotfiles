@@ -51,6 +51,7 @@ require("lazy").setup({
     },
 
     { 'echasnovski/mini.comment', version = '*' },
+    'windwp/nvim-autopairs',
 
     'nvim-treesitter/nvim-treesitter',
     'rebelot/kanagawa.nvim'
