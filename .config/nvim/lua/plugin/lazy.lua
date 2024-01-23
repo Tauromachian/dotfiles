@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     'nvim-lua/plenary.nvim',
 
+    -- Navigation
     'nvim-tree/nvim-tree.lua',
     {
         'akinsho/bufferline.nvim',
@@ -27,15 +28,16 @@ require("lazy").setup({
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
+    -- LSPs and snippets
     {'williamboman/mason.nvim'},
     {'williamboman/mason-lspconfig.nvim'},
-
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
     {'neovim/nvim-lspconfig'},
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'L3MON4D3/LuaSnip'},
 
+    -- Git
     'lewis6991/gitsigns.nvim',
     'tpope/vim-fugitive',
 
