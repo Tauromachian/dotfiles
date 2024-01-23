@@ -50,6 +50,8 @@ require("lazy").setup({
       opts = {},
     },
 
+    { 'echasnovski/mini.comment', version = '*' },
+
     'nvim-treesitter/nvim-treesitter',
     'rebelot/kanagawa.nvim'
 })
