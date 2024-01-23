@@ -37,6 +37,8 @@ require("lazy").setup({
     {'L3MON4D3/LuaSnip'},
 
     'lewis6991/gitsigns.nvim',
+    'tpope/vim-fugitive',
+
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
