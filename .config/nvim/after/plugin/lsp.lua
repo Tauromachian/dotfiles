@@ -4,6 +4,18 @@ local cmp_action = require('lsp-zero').cmp_action()
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    ensure_installed = { 'tsserver' },
+    handlers = {
+        lsp.default_setup,
+        lua_ls = function()
+            local lua_opts = lsp.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
+        end,
+    }
+})
+
 cmp.setup({
     sources = {
         { name = 'nvim_lsp' },
