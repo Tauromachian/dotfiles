@@ -1,4 +1,4 @@
-local lsp = require('lsp-zero').preset({})
+local lsp = require('lsp-zero')
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
