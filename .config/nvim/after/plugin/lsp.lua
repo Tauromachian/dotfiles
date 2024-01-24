@@ -38,13 +38,6 @@ cmp.setup({
 
 local lspconfig = require('lspconfig')
 
-lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-lspconfig.intelephense.setup {}
-lspconfig.astro.setup {}
-lspconfig.volar.setup {}
-lspconfig.eslint.setup {}
-lspconfig.emmet_ls.setup {}
-
 lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
@@ -56,7 +49,15 @@ lsp.on_attach(function(client, bufnr)
             vim.lsp.buf.format()
         end
     })
+
+    vim.api.nvim_set_keymap('n', '<leader>ep', '<cmd>lua vim.diagnostic.open_float()<CR>',
+        { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
 end)
 
-
-lsp.setup()
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
