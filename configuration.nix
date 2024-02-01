@@ -39,6 +39,8 @@
   services.xserver.libinput.enable = true;
   services.xserver.displayManager.gdm.enable = true;
 
+  services.flatpak.enable = true;
+
   services.gnome.core-utilities.enable = false;
 
   services.xserver.desktopManager.gnome.enable = true;
