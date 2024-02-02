@@ -131,7 +131,8 @@
 
   # Open ports in the firewall.
   networking.firewall = {
-    enable = false;
+    allowedTCPPorts = [ 53 ];
+    allowedUDPPorts = [ 53 51820 ];
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
