@@ -50,6 +50,7 @@ sudo apt-get install -y samba --install-recommends
 
 # APT
 sudo apt-get -y install gpick
+sudo apt-get install gnome-boxes
 
 #Gaming
 sudo dpkg --add-architecture i386 
@@ -62,7 +63,7 @@ sudo add-apt-repository ppa:lutris-team/lutris
 sudo apt update
 sudo apt install -y lutris
 
-z
+
 #Flatpak applications
 flatpak install flathub org.videolan.VLC -y
 flatpak install flathub com.obsproject.Studio -y
@@ -76,3 +77,5 @@ flatpak install flathub org.telegram.desktop
 #sudo snap install vlc
 sudo snap install insomnia
 sudo snap install discord
+sudo snap install nordpass
+
