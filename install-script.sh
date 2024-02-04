@@ -78,4 +78,4 @@ flatpak install flathub org.telegram.desktop
 sudo snap install insomnia
 sudo snap install discord
 sudo snap install nordpass
-
+sudo snap install nvim --classic
