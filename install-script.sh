@@ -54,10 +54,10 @@ sudo apt-get install gnome-boxes
 
 #Gaming
 sudo dpkg --add-architecture i386 
-wget -nc https://dl.winehq.org/wine-builds/winehq.key
-sudo apt-key add winehq.key
-sudo apt-get update
-sudo apt install -y --install-recommends winehq-stable
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+
 
 sudo add-apt-repository ppa:lutris-team/lutris
 sudo apt update
