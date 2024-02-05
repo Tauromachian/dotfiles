@@ -12,7 +12,6 @@ require("conform").setup({
         yaml = { "prettier" },
         graphql = { "prettier" },
         html = { "prettier" },
-        astro = { "prettier" },
         php = { { "pint", "php_cs_fixer" } }
     },
 
