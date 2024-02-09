@@ -32,16 +32,18 @@ require("lazy").setup({
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
-    { 'neovim/nvim-lspconfig' },
-    { "rafamadriz/friendly-snippets" },
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/nvim-cmp',
-    { 'saadparwaiz1/cmp_luasnip' },
+    'neovim/nvim-lspconfig',
+
+    "rafamadriz/friendly-snippets",
     {
         'L3MON4D3/LuaSnip',
         version = "v2.*",
         build = "make install_jsregexp"
     },
+
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'saadparwaiz1/cmp_luasnip',
 
     -- Git
     'lewis6991/gitsigns.nvim',
