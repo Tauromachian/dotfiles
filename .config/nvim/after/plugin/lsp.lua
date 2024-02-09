@@ -25,7 +25,7 @@ cmp.setup({
     -- Preselect first item from autocompletion
     preselect = 'item',
 
-    -- Sets the key Enter to select completion
+    -- Sets simple autocompletion keybindings
     mapping = {
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
