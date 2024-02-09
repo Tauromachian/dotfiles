@@ -21,11 +21,10 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
     },
+
     -- Preselect first item from autocompletion
     preselect = 'item',
-    completion = {
-        completeopt = 'menu,menuone,noinsert'
-    },
+
     -- Sets the key Enter to select completion
     mapping = {
         ['<C-Space>'] = cmp.mapping.complete(),
