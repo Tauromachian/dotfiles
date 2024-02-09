@@ -17,8 +17,19 @@ buffer_searcher = function()
                 vim.schedule(buffer_searcher)
             end
 
-            -- this is just an example
+            local delete_multiple_buf = function()
+                local picker = action_state.get_current_picker(prompt_bufnr)
+                local selection = picker:get_multi_selection()
+                for _, entry in ipairs(selection) do
+                    vim.api.nvim_buf_delete(entry.bufnr, { force = true })
+                end
+                actions.close(prompt_bufnr)
+                vim.schedule(buffer_searcher)
+            end
+
             map('n', 'dd', delete_buf)
+            map('n', '<C-d>', delete_multiple_buf)
+            map('i', '<C-d>', delete_multiple_buf)
 
             return true
         end
