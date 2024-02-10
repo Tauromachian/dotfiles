@@ -1,3 +1,5 @@
+[window]
+decorations = 'None'
 [font]
 size = 13
 [font.normal]
