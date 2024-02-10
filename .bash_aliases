@@ -1,7 +1,5 @@
 alias sudo="sudo "
 
-alias code="flatpak run com.visualstudio.code"
-
 alias docker=podman
 alias docker-compose=podman-compose
 
