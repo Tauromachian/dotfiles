@@ -63,7 +63,6 @@ sudo apt install -y lutris
 flatpak install flathub org.videolan.VLC -y
 flatpak install flathub com.obsproject.Studio -y
 flatpak install flathub org.shotcut.Shotcut -y
-flatpak install flathub nl.hjdskes.gcolor3 -y
 flatpak install flathub com.calibre_ebook.calibre -y
 flatpak install flathub com.valvesoftware.Steam -y
 flatpak install flathub org.telegram.desktop
