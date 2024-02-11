@@ -44,13 +44,8 @@ sudo apt install -y brave-browser
 sudo apt-get update
 sudo apt-get install -y samba --install-recommends
 
-#Timeshift
-#sudo apt-add-repository -y ppa:teejee2008/ppa
-#sudo apt-get update
-
-# APT
-sudo apt-get -y install gpick
-sudo apt-get install gnome-boxes
+# Starship prompt install
+curl -sS https://starship.rs/install.sh | sh
 
 #Gaming
 sudo dpkg --add-architecture i386 
