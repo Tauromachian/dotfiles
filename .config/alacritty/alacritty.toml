@@ -3,7 +3,7 @@ decorations = 'None'
 [font]
 size = 13
 [font.normal]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "CaskaydiaMono Nerd Font Propo"
 [shell]
 program = "tmux"
 [[keyboard.bindings]]
