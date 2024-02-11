@@ -1,3 +1,5 @@
+PATH=$PATH:~/.cargo/bin:/home/jose/.config/php:/home/jose/.yarn/bin::/home/jose/.config/bun
+
 apt() { 
   command nala "$@"
 }
