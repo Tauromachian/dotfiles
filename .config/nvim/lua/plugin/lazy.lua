@@ -61,5 +61,10 @@ require("lazy").setup({
     'tpope/vim-surround',
 
     'nvim-treesitter/nvim-treesitter',
-    'rebelot/kanagawa.nvim'
+    'rebelot/kanagawa.nvim',
+
+    {
+      'Exafunction/codeium.vim',
+      event = 'BufEnter'
+    }
 })
