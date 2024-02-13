@@ -24,6 +24,9 @@ cmp.setup({
 
     -- Preselect first item from autocompletion
     preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert',
+    },
 
     -- Sets simple autocompletion keybindings
     mapping = {
