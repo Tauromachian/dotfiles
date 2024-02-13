@@ -24,6 +24,9 @@ vim.opt.scrolloff = 8
 vim.opt.clipboard = "unnamedplus"
 vim.opt.wrap = false
 
+-- Default theme
+vim.cmd("colorscheme kanagawa")
+
 -- Spell checking
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
