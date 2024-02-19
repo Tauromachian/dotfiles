@@ -40,6 +40,10 @@ cmp.setup({
 
 local lspconfig = require('lspconfig')
 
+lspconfig.emmet_language_server.setup({
+    filetypes = { "css", "html", "javascript", "sass", "scss", "handlebars", "astro" },
+})
+
 lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
