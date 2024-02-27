@@ -36,10 +36,10 @@ buffer_searcher = function()
     }
 end
 
-vim.keymap.set('n', '<leader>tf', builtin.find_files, {})
-vim.keymap.set('n', '<leader>tg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>tb', buffer_searcher, {})
-vim.keymap.set('n', '<leader>tt', builtin.colorscheme, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', buffer_searcher, {})
+vim.keymap.set('n', '<leader>ft', builtin.colorscheme, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
 -- The code bellow opens in nvim tree the file location after the same is found in telescope
