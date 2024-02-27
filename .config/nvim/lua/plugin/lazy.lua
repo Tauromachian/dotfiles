@@ -16,11 +16,6 @@ require("lazy").setup({
 
     -- Navigation
     'nvim-tree/nvim-tree.lua',
-    {
-        'akinsho/bufferline.nvim',
-        version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons'
-    },
     'ThePrimeagen/harpoon',
     {
         'nvim-telescope/telescope.nvim',
@@ -64,7 +59,7 @@ require("lazy").setup({
     'rebelot/kanagawa.nvim',
 
     {
-      'Exafunction/codeium.vim',
-      event = 'BufEnter'
+        'Exafunction/codeium.vim',
+        event = 'BufEnter'
     }
 })
