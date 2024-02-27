@@ -1,5 +1,7 @@
 alias sudo="sudo "
 
+alias v="nvim"
+
 alias docker=podman
 alias docker-compose=podman-compose
 
