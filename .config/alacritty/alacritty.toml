@@ -14,3 +14,7 @@ chars = "\uE000"
 key = ")"
 mods = "Control|Shift"
 chars = "\uE001"
+[[keyboard.bindings]]
+key = "Tab"
+mods = "Control"
+chars = "\uE002"
