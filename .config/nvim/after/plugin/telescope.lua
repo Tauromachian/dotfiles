@@ -38,9 +38,11 @@ end
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', buffer_searcher, {})
 vim.keymap.set('n', '<leader>ft', builtin.colorscheme, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+
+vim.keymap.set('n', '<leader>fb', buffer_searcher, {})
+vim.keymap.set('n', '<C-_>', buffer_searcher, { noremap = true, silent = true })
 
 -- The code bellow opens in nvim tree the file location after the same is found in telescope
 require('telescope').setup {
