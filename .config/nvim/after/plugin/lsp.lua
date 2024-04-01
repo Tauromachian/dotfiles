@@ -49,13 +49,6 @@ lsp.on_attach(function(client, bufnr)
     -- to learn the available actions
     lsp.default_keymaps({ buffer = bufnr })
 
-    vim.api.nvim_create_autocmd('BufWritePre', {
-        pattern = '*.lua,*.php,*.astro',
-        callback = function()
-            vim.lsp.buf.format()
-        end
-    })
-
     vim.api.nvim_set_keymap('n', '<leader>ep', '<cmd>lua vim.diagnostic.open_float()<CR>',
         { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
