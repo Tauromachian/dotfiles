@@ -9,6 +9,8 @@ alias nr="npm run"
 alias ni="corepack npm install"
 alias y="corepack yarn"
 
+alias ghost:start="ghost start --no-setup-linux-user"
+
 alias rog="./Documents/rogauracore/rogauracore"
 alias start-proxy="sudo bash ~/Documents/linux-proxy-starter/proxy.sh"
 
