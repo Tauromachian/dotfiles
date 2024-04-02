@@ -5,6 +5,7 @@ require("conform").setup({
         typescript = { "prettier" },
         react = { "prettier" },
         typescriptreact = { "prettier" },
+        javascriptreact = { "prettier" },
         vue = { "prettier" },
         markdown = { "prettier" },
         css = { "prettier" },
