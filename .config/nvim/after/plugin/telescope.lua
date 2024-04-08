@@ -10,11 +10,15 @@ buffer_searcher = function()
         ignore_current_buffer = true,
         show_all_buffers = false,
         attach_mappings = function(prompt_bufnr, map)
+            local refresh_buffer_searcher = function()
+                actions.close(prompt_bufnr)
+                vim.schedule(buffer_searcher)
+            end
+
             local delete_buf = function()
                 local selection = action_state.get_selected_entry()
                 vim.api.nvim_buf_delete(selection.bufnr, { force = true })
-                actions.close(prompt_bufnr)
-                vim.schedule(buffer_searcher)
+                refresh_buffer_searcher()
             end
 
             local delete_multiple_buf = function()
@@ -23,8 +27,7 @@ buffer_searcher = function()
                 for _, entry in ipairs(selection) do
                     vim.api.nvim_buf_delete(entry.bufnr, { force = true })
                 end
-                actions.close(prompt_bufnr)
-                vim.schedule(buffer_searcher)
+                refresh_buffer_searcher()
             end
 
             map('n', 'dd', delete_buf)
