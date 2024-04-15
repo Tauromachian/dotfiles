@@ -38,3 +38,5 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 vim.keymap.set("v", "<leader>p", "\"_dP", { noremap = true })
 vim.keymap.set("n", "<leader>d", "\"_d", { noremap = true })
+
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
