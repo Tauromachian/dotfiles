@@ -51,8 +51,10 @@ require("lazy").setup({
         'stevearc/conform.nvim',
         opts = {},
     },
-    { 'echasnovski/mini.comment', version = '*' },
+    { 'echasnovski/mini.comment',        version = '*' },
+
     'windwp/nvim-autopairs',
+    'windwp/nvim-ts-autotag',
     'tpope/vim-surround',
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
