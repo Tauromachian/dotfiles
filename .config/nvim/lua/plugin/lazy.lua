@@ -55,7 +55,7 @@ require("lazy").setup({
     'windwp/nvim-autopairs',
     'tpope/vim-surround',
 
-    'nvim-treesitter/nvim-treesitter',
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     'rebelot/kanagawa.nvim',
 
     {
