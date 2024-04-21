@@ -34,34 +34,36 @@ require("lazy").setup({
         version = "v2.*",
         build = "make install_jsregexp"
     },
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+    },
 
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
     'saadparwaiz1/cmp_luasnip',
 
+    {
+        'Exafunction/codeium.vim',
+        event = 'BufEnter'
+    },
+
     -- Git
     'lewis6991/gitsigns.nvim',
     'tpope/vim-fugitive',
 
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
-    },
-    {
-        'stevearc/conform.nvim',
-        opts = {},
-    },
-    { 'echasnovski/mini.comment',        version = '*' },
-
+    -- Utilities
+    'echasnovski/mini.comment',
     'windwp/nvim-autopairs',
     'windwp/nvim-ts-autotag',
     'tpope/vim-surround',
 
+    -- Styles and looks
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     'rebelot/kanagawa.nvim',
-
-    {
-        'Exafunction/codeium.vim',
-        event = 'BufEnter'
-    }
 })
