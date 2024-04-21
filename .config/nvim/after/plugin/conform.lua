@@ -2,14 +2,14 @@ require("conform").setup({
     formatters_by_ft = {
         -- Use a sub-list to run only the first available formatter
         javascript = { "prettier" },
-        typescript = { "prettier" },
+        typescript = { { "biome", "prettier" } },
         react = { "prettier" },
-        typescriptreact = { "prettier" },
+        typescriptreact = { { "biome", "prettier" } },
         javascriptreact = { "prettier" },
         vue = { "prettier" },
         markdown = { "prettier" },
         css = { "prettier" },
-        json = { "prettier" },
+        json = { { "biome", "prettier" } },
         scss = { "prettier" },
         less = { "prettier" },
         yaml = { "prettier" },
