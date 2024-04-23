@@ -1,7 +1,7 @@
 require('gitsigns').setup {
     attach_to_untracked = true,
     on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
+        local gs = require('gitsigns')
 
         local function map(mode, l, r, opts)
             opts = opts or {}
@@ -11,16 +11,20 @@ require('gitsigns').setup {
 
         -- Navigation
         map('n', ']c', function()
-            if vim.wo.diff then return ']c' end
-            vim.schedule(function() gs.next_hunk() end)
-            return '<Ignore>'
-        end, { expr = true })
+            if vim.wo.diff then
+                vim.cmd.normal({ ']c', bang = true })
+            else
+                gs.nav_hunk('next')
+            end
+        end)
 
         map('n', '[c', function()
-            if vim.wo.diff then return '[c' end
-            vim.schedule(function() gs.prev_hunk() end)
-            return '<Ignore>'
-        end, { expr = true })
+            if vim.wo.diff then
+                vim.cmd.normal({ '[c', bang = true })
+            else
+                gs.nav_hunk('prev')
+            end
+        end)
 
 
         -- Actions
