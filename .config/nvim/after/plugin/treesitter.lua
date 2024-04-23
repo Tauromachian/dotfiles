@@ -13,6 +13,9 @@ require 'nvim-treesitter.configs'.setup {
 
     ---- if you need to change the installation directory of the parsers (see -> advanced setup)
     -- parser_install_dir = "/some/path/to/store/parsers", -- remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+    autotag = {
+        enable = true,
+    },
 
     highlight = {
         enable = true,
