@@ -41,7 +41,7 @@ cmp.setup({
 local lspconfig = require('lspconfig')
 
 lspconfig.emmet_language_server.setup({
-    filetypes = { "css", "html", "javascript", "sass", "scss", "handlebars", "astro" },
+    filetypes = { "css", "html", "javascript", "sass", "scss", "handlebars", "astro", "vue" },
 })
 
 lsp.on_attach(function(client, bufnr)
