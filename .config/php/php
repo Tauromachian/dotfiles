@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -t 1 ]; then
-    podman run --interactive --tty --rm -v $(pwd):/var/www/html --network host localhost/php8.2:latest php "$@"
+    podman run --interactive --tty --rm -v $(pwd):/usr/src/myapp -w /usr/src/myapp --network host docker.io/library/php php "$@"
 else
-    podman run --rm -v $(pwd):/var/www/html --network host localhost/php8.2:latest php "$@"
+    podman run --rm -v $(pwd):/usr/src/myapp -w /usr/src/myapp --network host docker.io/library/php php "$@"
 fi
