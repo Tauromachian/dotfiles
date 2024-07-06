@@ -14,7 +14,7 @@ require("conform").setup({
         yaml = { "prettier" },
         graphql = { "prettier" },
         html = { "prettier" },
-        php = { { "pint", "php_cs_fixer" } }
+        php = { "php_cs_fixer" }
     },
 
     -- log_level = vim.log.levels.DEBUG,
@@ -24,16 +24,6 @@ require("conform").setup({
         timeout_ms = 1000,
         lsp_fallback = true,
     },
-
-    -- formatters = {
-    --     pint2 = {
-    --         command = function()
-    --             return './vendor/bin/pint'
-    --         end,
-    --         args = { vim.fn.expand('%') },
-    --         stdin = false
-    --     }
-    -- }
 })
 
 -- vim.api.nvim_create_autocmd("BufWritePost", {
