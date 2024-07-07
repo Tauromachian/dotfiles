@@ -11,7 +11,6 @@ alias y="corepack yarn"
 
 alias ghost:start="ghost start --no-setup-linux-user"
 
-alias rog="./Documents/rogauracore/rogauracore"
 alias start-proxy="sudo bash ~/Documents/linux-proxy-starter/proxy.sh"
 
 # php:dev-env stands for a custom php image build as a development environment 
