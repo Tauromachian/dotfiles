@@ -14,7 +14,8 @@ require("conform").setup({
         yaml = { "prettier" },
         graphql = { "prettier" },
         html = { "prettier" },
-        php = { "php_cs_fixer" }
+        php = { "php_cs_fixer" },
+        blade = { "blade-formatter" }
     },
 
     -- log_level = vim.log.levels.DEBUG,
