@@ -1,3 +1,4 @@
+export EDITOR=nvim
 export PATH=$PATH:/home/jose/.config/php
 
 eval "$(starship init bash)"
