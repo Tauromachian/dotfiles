@@ -1,4 +1,4 @@
-PATH=$PATH:~/.cargo/bin:/home/jose/.config/php:/home/jose/.yarn/bin::/home/jose/.config/bun
+export PATH=$PATH:/home/jose/.config/php
 
 apt() { 
   command nala "$@"
