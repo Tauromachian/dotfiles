@@ -14,8 +14,9 @@ alias ghost:start="ghost start --no-setup-linux-user"
 alias rog="./Documents/rogauracore/rogauracore"
 alias start-proxy="sudo bash ~/Documents/linux-proxy-starter/proxy.sh"
 
+# php:dev-env stands for a custom php image build as a development environment 
 alias php8.0="podman run --rm -v $(pwd):/var/www/html --network host -p 8000:8000 localhost/php8.0 php"
 alias php="/home/jose/.config/php/php"
-alias composer='podman run --rm -v "$(pwd)":/app composer composer'
+alias composer='podman run --rm --network host -v $(pwd):/usr/src/myapp -w /usr/src/myapp php:dev-env composer'
 alias art="php artisan"
-alias art:serve="podman run --rm --network host --interactive --tty -v $(pwd):/usr/src/myapp -w /usr/src/myapp -p 8000:8000 docker.io/library/php php artisan serve --host 0.0.0.0 --port 8000"
+alias art:serve="podman run --rm --network host --interactive --tty -v $(pwd):/usr/src/myapp -w /usr/src/myapp -p 8000:8000 php:dev-env php artisan serve --host 0.0.0.0 --port 8000"
