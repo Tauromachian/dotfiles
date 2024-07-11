@@ -1,4 +1,4 @@
-vim.opt.runtimepath:append('~/.config/nvim/lua')
+require("config.lazy")
 
 vim.o.termguicolors = true
 
