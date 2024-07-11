@@ -1,7 +1,8 @@
 #!/bin/bash
 
+# Expect php:dev-env image to exist
 if [ -t 1 ]; then
-    podman run --interactive --tty --rm -v $(pwd):/usr/src/myapp -w /usr/src/myapp --network host docker.io/library/php php "$@"
+    podman run --interactive --tty --rm -v $(pwd):/usr/src/myapp -w /usr/src/myapp --network host php:dev-env php "$@"
 else
-    podman run --rm -v $(pwd):/usr/src/myapp -w /usr/src/myapp --network host docker.io/library/php php "$@"
+    podman run --rm -v $(pwd):/usr/src/myapp -w /usr/src/myapp --network host php:dev-env php "$@"
 fi
