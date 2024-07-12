@@ -1,5 +1,3 @@
-require("config.lazy")
-
 vim.o.termguicolors = true
 
 vim.g.mapleader = " "
@@ -48,3 +46,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end
 })
+
+require("config.lazy")
