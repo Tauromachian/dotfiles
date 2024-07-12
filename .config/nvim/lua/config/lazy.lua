@@ -28,7 +28,11 @@ require("lazy").setup({
 
     -- Navigation
     'nvim-tree/nvim-tree.lua',
-    'ThePrimeagen/harpoon',
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' }
@@ -79,4 +83,7 @@ require("lazy").setup({
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     'rebelot/kanagawa.nvim',
+}, {
+    -- automatically check for plugin updates
+    checker = { enabled = true },
 })
