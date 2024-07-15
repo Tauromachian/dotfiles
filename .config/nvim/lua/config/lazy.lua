@@ -83,7 +83,5 @@ require("lazy").setup({
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     'rebelot/kanagawa.nvim',
-}, {
-    -- automatically check for plugin updates
-    checker = { enabled = true },
-})
+} -- automatically check for plugin updates
+)
