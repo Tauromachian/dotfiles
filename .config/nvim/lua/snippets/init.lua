@@ -17,4 +17,4 @@ local function merge(snippets_lists)
 end
 
 ls.add_snippets('javascript', javascript_snippets)
-ls.add_snippets('vue', { unpack(javascript_snippets), unpack(vue_snippets) })
+ls.add_snippets('vue', merge({ vue_snippets, javascript_snippets }))
