@@ -3,7 +3,7 @@ local s = ls.snippet
 local i = ls.insert_node
 local t = ls.text_node
 
-local javascript = {
+local vue = {
     s("vProp", {
         i(1, 'name'),
         t(":"),
@@ -43,4 +43,4 @@ local javascript = {
     }),
 }
 
-return javascript
+return vue
