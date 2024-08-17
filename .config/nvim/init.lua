@@ -34,6 +34,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
+
 vim.keymap.set("v", "<leader>p", "\"_dP", { noremap = true })
 vim.keymap.set("n", "<leader>d", "\"_d", { noremap = true })
 
