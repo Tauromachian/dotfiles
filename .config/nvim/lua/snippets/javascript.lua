@@ -10,7 +10,7 @@ local javascript = {
         i(2, 'parameter'),
         t(")"),
         t("=>"),
-        i(3, 'content'),
+        i(3, ''),
     }),
     s("func", {
         i(1, 'export '),
@@ -21,7 +21,7 @@ local javascript = {
         i(4, 'parameter'),
         t(") "),
         t("{"),
-        i(5, 'content'),
+        i(5, ''),
         t("}"),
     }),
 }
