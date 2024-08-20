@@ -2,7 +2,7 @@ local ls = require('luasnip') -- Load LuaSnip
 
 local javascript_snippets = require('snippets.javascript')
 local vue_snippets = require('snippets.vue')
-
+local typescript_snippets = require('snippets.typescript')
 
 local function merge(snippets_lists)
     local snippets = {}
@@ -17,4 +17,5 @@ local function merge(snippets_lists)
 end
 
 ls.add_snippets('javascript', javascript_snippets)
+ls.add_snippets('typescript', typescript_snippets)
 ls.add_snippets('vue', merge({ vue_snippets, javascript_snippets }))
