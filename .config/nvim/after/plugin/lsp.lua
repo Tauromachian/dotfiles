@@ -41,26 +41,6 @@ cmp.setup({
 
 local lspconfig = require('lspconfig')
 
-lspconfig.emmet_language_server.setup({
-    filetypes = { "css", "html", "javascript", "sass", "scss", "handlebars", "astro", "vue" },
-})
-lspconfig.tsserver.setup {
-    init_options = {
-        plugins = {
-            {
-                name = "@vue/typescript-plugin",
-                location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-                languages = { "javascript", "typescript", "vue" },
-            },
-        },
-    },
-    filetypes = {
-        "javascript",
-        "typescript",
-        "vue",
-    },
-}
-
 lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
