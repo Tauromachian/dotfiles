@@ -70,7 +70,6 @@ require("lazy").setup({
     'tpope/vim-fugitive',
 
     -- Utilities
-    'echasnovski/mini.comment',
     'windwp/nvim-autopairs',
     'windwp/nvim-ts-autotag',
     'tpope/vim-surround',
@@ -83,5 +82,4 @@ require("lazy").setup({
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     'rebelot/kanagawa.nvim',
-} -- automatically check for plugin updates
-)
+})
