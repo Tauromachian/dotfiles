@@ -11,12 +11,6 @@ require 'nvim-treesitter.configs'.setup {
     -- recommendation: set to false if you don't have `tree-sitter` cli installed locally
     auto_install = true,
 
-    ---- if you need to change the installation directory of the parsers (see -> advanced setup)
-    -- parser_install_dir = "/some/path/to/store/parsers", -- remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-    autotag = {
-        enable = true,
-    },
-
     highlight = {
         enable = true,
         -- setting this to true will run `:h syntax` and tree-sitter at the same time.
