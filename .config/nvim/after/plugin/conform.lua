@@ -1,14 +1,14 @@
 require("conform").setup({
     formatters_by_ft = {
         javascript = { "prettier" },
-        typescript = { { "prettier", "biome" } },
+        typescript = { "prettier", "biome", stop_after_first = true },
         react = { "prettier" },
-        typescriptreact = { { "prettier", "biome" } },
+        typescriptreact = { "prettier", "biome", stop_after_first = true },
         javascriptreact = { "prettier" },
         vue = { "prettier" },
         markdown = { "prettier" },
         css = { "prettier" },
-        json = { { "prettier", "biome" } },
+        json = { "prettier", "biome", stop_after_first = true },
         scss = { "prettier" },
         less = { "prettier" },
         yaml = { "prettier" },
@@ -18,12 +18,13 @@ require("conform").setup({
         blade = { "blade-formatter" }
     },
 
+
     -- log_level = vim.log.levels.DEBUG,
 
     format_on_save = {
         -- These options will be passed to conform.format()
-        timeout_ms = 1000,
-        lsp_fallback = true,
+        timeout_ms = 500,
+        lsp_format = "fallback",
     },
 })
 
