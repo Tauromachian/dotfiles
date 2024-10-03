@@ -24,6 +24,11 @@ local javascript = {
         i(5, ''),
         t("}"),
     }),
+    s("cw", {
+        t("console.warn("),
+        i(1, ''),
+        t(")"),
+    }),
 }
 
 return javascript
