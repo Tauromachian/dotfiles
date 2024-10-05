@@ -6,7 +6,6 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'tsserver' },
     handlers = {
         lsp.default_setup,
         lua_ls = function()
@@ -37,9 +36,6 @@ cmp.setup({
         ['<S-Tab>'] = cmp_action.luasnip_jump_backward(),
     }
 })
-
-
-local lspconfig = require('lspconfig')
 
 lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
