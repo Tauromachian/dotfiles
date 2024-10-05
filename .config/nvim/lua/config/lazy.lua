@@ -72,7 +72,14 @@ require("lazy").setup({
     -- Utilities
     'windwp/nvim-autopairs',
     'windwp/nvim-ts-autotag',
-    'tpope/vim-surround',
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({})
+        end
+    },
 
     -- Styles and looks
     {
