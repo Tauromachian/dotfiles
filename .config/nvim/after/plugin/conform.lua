@@ -22,8 +22,7 @@ require("conform").setup({
     -- log_level = vim.log.levels.DEBUG,
 
     format_on_save = {
-        -- These options will be passed to conform.format()
-        timeout_ms = 500,
+        timeout_ms = 2500,
         lsp_format = "fallback",
     },
 })
