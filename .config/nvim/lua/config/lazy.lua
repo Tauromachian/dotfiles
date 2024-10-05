@@ -70,8 +70,18 @@ require("lazy").setup({
     'tpope/vim-fugitive',
 
     -- Utilities
-    'windwp/nvim-autopairs',
-    'windwp/nvim-ts-autotag',
+    {
+        'windwp/nvim-autopairs',
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    },
+    {
+        'windwp/nvim-ts-autotag',
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end
+    },
     {
         "kylechui/nvim-surround",
         version = "*",
@@ -88,5 +98,10 @@ require("lazy").setup({
     },
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    'rebelot/kanagawa.nvim',
+    {
+        'rebelot/kanagawa.nvim',
+        config = function()
+            vim.cmd("colorscheme kanagawa")
+        end
+    },
 })
