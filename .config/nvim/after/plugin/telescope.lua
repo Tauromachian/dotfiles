@@ -1,5 +1,4 @@
 local builtin = require('telescope.builtin')
-local action_state = require('telescope.actions.state')
 local actions = require('telescope.actions')
 
 -- This function allows to close buffers on the buffer search.
@@ -9,33 +8,6 @@ buffer_searcher = function()
         sort_mru = true,
         ignore_current_buffer = true,
         show_all_buffers = false,
-        attach_mappings = function(prompt_bufnr, map)
-            local refresh_buffer_searcher = function()
-                actions.close(prompt_bufnr)
-                vim.schedule(buffer_searcher)
-            end
-
-            local delete_buf = function()
-                local selection = action_state.get_selected_entry()
-                vim.api.nvim_buf_delete(selection.bufnr, { force = true })
-                refresh_buffer_searcher()
-            end
-
-            local delete_multiple_buf = function()
-                local picker = action_state.get_current_picker(prompt_bufnr)
-                local selection = picker:get_multi_selection()
-                for _, entry in ipairs(selection) do
-                    vim.api.nvim_buf_delete(entry.bufnr, { force = true })
-                end
-                refresh_buffer_searcher()
-            end
-
-            map('n', 'dd', delete_buf)
-            map('n', '<C-d>', delete_multiple_buf)
-            map('i', '<C-d>', delete_multiple_buf)
-
-            return true
-        end
     }
 end
 
@@ -61,6 +33,10 @@ require('telescope').setup {
                     vim.api.nvim_input('<CR>')
                     vim.cmd(":NvimTreeClose")
                 end,
+                ["<c-d>"] = actions.delete_buffer,
+            },
+            n = {
+                ["<c-d>"] = actions.delete_buffer,
             },
         },
         layout_strategy = vim.o.lines > 70 and 'vertical' or 'horizontal',
