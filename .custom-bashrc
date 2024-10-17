@@ -1,8 +1,0 @@
-export EDITOR=nvim
-export PATH=$PATH:/home/jose/.config/php
-
-if [ -f ~/.bash_aliases ]; then 
-    . ~/.bash_aliases
-fi
-
-eval "$(starship init bash)"
