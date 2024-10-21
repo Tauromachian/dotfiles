@@ -1,0 +1,12 @@
+#!/bin/bash
+
+podman run \
+    --interactive \
+    --tty \
+    --rm \
+    --network host \
+    --volume $PWD:/app \
+    --volume $HOME/.deno:/deno-dir \
+    --workdir /app \
+    docker.io/denoland/deno:latest deno \
+    "$@"
