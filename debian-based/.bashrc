@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-PATH=$PATH:/home/jose/.yarn/bin:
+PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/deno
 export EDITOR=nvim;
 
 # If not running interactively, don't do anything
@@ -118,19 +118,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-deno () {
-  docker run \
-    --interactive \
-    --tty \
-    --rm \
-    --network host \
-    --volume $PWD:/app \
-    --volume $HOME/.deno:/deno-dir \
-    --workdir /app \
-    docker.io/denoland/deno:2.0.0 \
-    "$@"
-}
 
 apt() { 
   command nala "$@"
