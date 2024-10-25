@@ -1,0 +1,11 @@
+#!/bin/bash
+
+podman run \
+    --interactive \
+    --tty \
+    --rm \
+    --network host \
+    -w /app \
+    -v $PWD:/app \
+    localhost/lua:latest lua5.3 \
+    "$@"
