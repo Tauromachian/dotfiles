@@ -31,7 +31,26 @@ local typeorm = {
         t(':'),
         rep(1),
         t(';'),
+    }),
+    s('typeOneToMany', {
+        t("@OneToMany(() =>"),
+        i(1, 'EntityName'),
+        t(', ('),
+        i(2, 'entity'),
+        t(':'),
+        rep(1),
+        t(') =>'),
+        rep(2),
+        t('.'),
+        i(3, 'return'),
+        t({ ')', '' }),
+        rep(2),
+        t(':'),
+        rep(1),
+        t('[]'),
+        t(';'),
     })
+
 }
 
 
