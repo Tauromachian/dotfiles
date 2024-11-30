@@ -1,6 +1,6 @@
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
-local api = require("telescope.api")
+local api = require("nvim-tree.api")
 
 -- This function allows to close buffers on the buffer search.
 local buffer_searcher
@@ -32,6 +32,15 @@ require('telescope').setup {
                     api.tree.close()
                     actions.select_default(prompt_bufnr)
                 end,
+                ["<C-v>"] = function(prompt_bufnr)
+                    api.tree.close()
+                    actions.select_vertical(prompt_bufnr)
+                end,
+                ["<C-x>"] = function(prompt_bufnr)
+                    api.tree.close()
+                    actions.select_horizontal(prompt_bufnr)
+                end,
+
                 ["<c-d>"] = actions.delete_buffer,
             },
             n = {
