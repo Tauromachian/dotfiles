@@ -41,8 +41,3 @@ flatpak install flathub com.calibre_ebook.calibre -y
 flatpak install flathub com.valvesoftware.Steam -y
 flatpak install flathub org.telegram.desktop
 flatpak install flathub com.discordapp.Discord
-
-#Snap applications
-sudo snap install insomnia
-sudo snap install nordpass
-sudo snap install nvim --classic
