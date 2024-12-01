@@ -56,6 +56,10 @@ end
 
 local nvim_lsp = require('lspconfig')
 
+nvim_lsp.tailwindcss.setup {
+    root_dir = nvim_lsp.util.root_pattern("tailwind"),
+}
+
 local vue_typescript_plugin = require('mason-registry')
     .get_package('vue-language-server')
     :get_install_path()
