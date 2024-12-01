@@ -4,6 +4,7 @@ sudo apt install -y gpick
 sudo apt install -y gnome-boxes
 sudo apt install -y tmux
 sudo apt install -y nala
+sudo apt install -y samba
 
 #Install brave web browser
 sudo apt install curl
@@ -16,9 +17,6 @@ sudo apt update
 
 sudo apt install brave-browser
 
-#Samba share
-sudo apt-get update
-sudo apt-get install -y samba --install-recommends
 
 # Starship prompt install
 curl -sS https://starship.rs/install.sh | sh
