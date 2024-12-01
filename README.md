@@ -45,3 +45,5 @@ This script installs the following packages:
 - [wine](https://www.winehq.org/)
 - [lutris](https://lutris.net/)
 
+### Others
+- Nvidia drivers if the hardware is found
