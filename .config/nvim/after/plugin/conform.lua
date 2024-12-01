@@ -1,7 +1,7 @@
 require("conform").setup({
     formatters_by_ft = {
         javascript = { "prettier" },
-        typescript = { "prettier", "biome", stop_after_first = true },
+        typescript = { "prettier", "biome", "deno_fmt", stop_after_first = true },
         react = { "prettier" },
         typescriptreact = { "prettier", "biome", stop_after_first = true },
         javascriptreact = { "prettier" },
