@@ -53,3 +53,30 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+local nvim_lsp = require('lspconfig')
+
+local vue_typescript_plugin = require('mason-registry')
+    .get_package('vue-language-server')
+    :get_install_path()
+    .. '/node_modules/@vue/language-server'
+    .. '/node_modules/@vue/typescript-plugin'
+
+nvim_lsp.ts_ls.setup {
+    init_options = {
+        plugins = {
+            {
+                name = "@vue/typescript-plugin",
+                location = vue_typescript_plugin,
+                languages = { 'javascript', 'typescript', 'vue' }
+            },
+        }
+    },
+    filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
+    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    single_file_support = false,
+}
+
+nvim_lsp.denols.setup {
+    root_dir = nvim_lsp.util.root_pattern("deno.json"),
+}
