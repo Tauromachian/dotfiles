@@ -81,3 +81,17 @@ fi
 #Brew installs
 brew install podman
 brew install neovim
+
+
+if lspci | grep -i nvidia >/dev/null 2>&1; then
+    echo "NVIDIA hardware detected"
+    if command -v nvidia-smi >/dev/null 2>&1; then
+        echo "NVIDIA drivers are installed"
+        nvidia-smi
+    else
+        sudo add-apt-repository ppa:graphics-drivers/ppa
+        sudo ubuntu-drivers autoinstall
+    fi
+else
+    echo "No NVIDIA hardware found"
+fi
