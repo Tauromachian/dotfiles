@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/deno
+PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/deno:/home/jose/.config/lua
 export EDITOR=nvim;
 
 # If not running interactively, don't do anything
