@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sudo apt install -y podman
 sudo apt install -y gpick
 sudo apt install -y gnome-boxes
 sudo apt install -y tmux
