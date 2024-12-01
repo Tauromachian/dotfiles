@@ -1,6 +1,6 @@
 # Automatize Linux Installations
 
-This is a development focused install script.
+This is a development focused install script. I made this after the nth installation for **reasons**
 
 This script uses 3 package managers to automate Linux installations.
 
