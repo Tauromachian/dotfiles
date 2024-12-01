@@ -20,6 +20,18 @@ sudo apt install brave-browser
 # Starship prompt install
 curl -sS https://starship.rs/install.sh | sh
 
+
+#Install brew if is not installed
+if ! command -v neofetch > /dev/null 2>&1; then
+    echo 'Installing neofetch'
+
+    sudo add-apt-repository ppa:dawidd0811/neofetch
+    sudo apt-get update
+    sudo apt-get install neofetch -y
+else
+    echo "Neofetch is already installed"
+fi
+
 #Gaming
 sudo dpkg --add-architecture i386 
 sudo mkdir -pm755 /etc/apt/keyrings
