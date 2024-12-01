@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Update and upgrade
+sudo apt update
+sudo apt upgrade -y
+
 sudo apt install -y gpick
 sudo apt install -y gnome-boxes
 sudo apt install -y tmux
