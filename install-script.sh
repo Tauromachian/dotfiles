@@ -31,6 +31,18 @@ sudo add-apt-repository ppa:lutris-team/lutris
 sudo apt update
 sudo apt install -y lutris
 
+#Install brew if is not installed
+if ! command -v flatpak > /dev/null 2>&1; then
+    echo 'Installing flatpak'
+
+    sudo add-apt-repository ppa:flatpak/stable
+    sudo apt update
+    sudo apt install flatpak
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+else
+    echo "Flatpak is already installed"
+fi
+
 
 #Flatpak applications
 flatpak install flathub org.videolan.VLC -y
