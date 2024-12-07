@@ -7,14 +7,6 @@ family = "CaskaydiaMono Nerd Font Propo"
 [terminal.shell]
 program = "tmux"
 [[keyboard.bindings]]
-key = "("
-mods = "Control|Shift"
-chars = "\uE000"
-[[keyboard.bindings]]
-key = ")"
-mods = "Control|Shift"
-chars = "\uE001"
-[[keyboard.bindings]]
 key = "Tab"
 mods = "Control"
 chars = "\uE002"
