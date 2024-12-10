@@ -36,7 +36,7 @@ sudo add-apt-repository ppa:lutris-team/lutris
 sudo apt update
 sudo apt install -y lutris
 
-#Install brew if is not installed
+#Install flatpak if is not installed
 if ! command -v flatpak > /dev/null 2>&1; then
     echo 'Installing flatpak'
 
