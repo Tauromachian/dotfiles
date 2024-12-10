@@ -10,6 +10,7 @@ sudo apt install -y tmux
 sudo apt install -y nala
 sudo apt install -y samba
 sudo apt install -y curl
+sudo apt install -y neofetch
 
 #Install brave web browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -23,18 +24,6 @@ sudo apt install brave-browser
 
 # Starship prompt install
 curl -sS https://starship.rs/install.sh | sh
-
-
-#Install brew if is not installed
-if ! command -v neofetch > /dev/null 2>&1; then
-    echo 'Installing neofetch'
-
-    sudo add-apt-repository ppa:dawidd0811/neofetch
-    sudo apt-get update
-    sudo apt-get install neofetch -y
-else
-    echo "Neofetch is already installed"
-fi
 
 #Gaming
 sudo dpkg --add-architecture i386 
