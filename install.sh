@@ -71,6 +71,18 @@ fi
 brew install podman
 brew install neovim
 
+# Podman images
+podman pull docker.io/library/alpine
+podman pull docker.io/denoland/deno
+podman pull docker.io/library/node:latest
+podman pull docker.io/library/node:20-alpine
+podman pull docker.io/library/node:18.20.4-alpine
+podman pull nginx
+podman pull docker.io/library/postgres
+podman pull docker.io/valkey/valkey
+podman pull php
+podman pull docker.io/library/pgadmin
+podman pull php:8.0-fpm-alpine
 
 if lspci | grep -i nvidia >/dev/null 2>&1; then
     echo "NVIDIA hardware detected"
