@@ -12,6 +12,17 @@ local javascript = {
         t("=>"),
         i(3, ''),
     }),
+    s("=>2", {
+        t('const '),
+        i(1, 'name'),
+        t('='),
+        i(2, 'async '),
+        t('('),
+        i(3, 'parameter'),
+        t(')'),
+        t('=>'),
+        i(4, ''),
+    }),
     s("func", {
         i(1, 'export '),
         i(2, 'async '),

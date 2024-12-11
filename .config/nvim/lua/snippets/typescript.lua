@@ -17,6 +17,18 @@ local typescript = {
         t("=>"),
         i(3, ''),
     }),
+    s("=>2", {
+        i(1, 'const'),
+        t(' '),
+        i(2, 'name'),
+        t('='),
+        i(3, 'async '),
+        t('('),
+        i(4, 'parameter'),
+        t(')'),
+        t('=>'),
+        i(5, ''),
+    }),
     s("func", {
         i(1, 'export '),
         i(2, 'async '),
