@@ -23,3 +23,19 @@
     - org.telegram.desktop
     - com.discordapp.Discord
     - com.brave.Browser
+
+- name: Give Brave access to home
+  shell: |
+    flatpak override --user com.brave.Browser --filesystem=home
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Give Telegram access to home
+  shell: |
+    flatpak override --user org.telegram.desktop --filesystem=home
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Give Discord access to home
+  shell: |
+    flatpak override --user com.discordapp.Discord --filesystem=home
+  when: ansible_distribution == 'Ubuntu'
+
