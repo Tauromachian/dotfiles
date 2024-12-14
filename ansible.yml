@@ -7,4 +7,5 @@
     - inclue: tasks/flatpak.yml
     - includ: tasks/homebrew.yml
     - include: tasks/podman.yml
+    - include: tasks/dotfiles.yml
     - include: tasks/nvidia.yml
