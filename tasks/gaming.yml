@@ -1,0 +1,31 @@
+- name: Add i386 architecture
+  command: dpkg --add-architecture i386
+
+- name: Create keyrings directory
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Download WineHQ key
+  get_url:
+    url: https://dl.winehq.org/wine-builds/winehq.key
+    dest: /etc/apt/keyrings/winehq-archive.key
+
+- name: Download WineHQ sources
+  get_url:
+    url: https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+    dest: /etc/apt/sources.list.d/
+
+- name: Add Lutris PPA
+  apt_repository:
+    repo: ppa:lutris-team/lutris
+    state: present
+
+- name: Install Wine and Lutris
+  apt:
+    name:
+      - winehq-stable
+      - lutris
+    state: present
+    install_recommends: yes

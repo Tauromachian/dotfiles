@@ -1,0 +1,25 @@
+- name: Install Flatpak
+  apt:
+    name: flatpak
+    state: present
+
+- name: Add Flathub remote
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+- name: Install Flatpak applications
+  flatpak:
+    name: "{{ item }}"
+    state: present
+    remote: flathub
+  loop:
+    - org.videolan.VLC
+    - com.obsproject.Studio
+    - org.shotcut.Shotcut
+    - com.calibre_ebook.calibre
+    - com.valvesoftware.Steam
+    - org.telegram.desktop
+    - com.discordapp.Discord
+    - com.brave.Browser

@@ -1,0 +1,15 @@
+- name: Check if Homebrew is installed
+  stat:
+    path: /home/linuxbrew/.linuxbrew/bin/brew
+  register: brew_check
+
+- name: Install Homebrew
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when: not brew_check.stat.exists
+
+- name: Install Homebrew packages
+  community.general.homebrew:
+    name:
+      - podman
+      - neovim
+    state: present

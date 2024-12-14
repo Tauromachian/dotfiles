@@ -1,0 +1,19 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Upgrade all packages
+  apt:
+    upgrade: yes
+
+- name: Install common packages
+  apt:
+    name:
+      - gpick
+      - gnome-boxes
+      - tmux
+      - nala
+      - samba
+      - curl
+      - neofetch
+    state: present
