@@ -1,8 +1,8 @@
 # Automatize Linux Installations
 
-This is a development focused install script. I made this after the nth installation for **reasons**
+This is a development focused install script. It uses Ansible.
 
-This script uses 3 package managers to automate Linux installations.
+This script uses 3 package managers:
 
 - [APT](https://wiki.ubuntu.com/Releases)
 - [Brew](https://brew.sh/)
