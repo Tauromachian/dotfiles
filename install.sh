@@ -5,3 +5,5 @@ if ! command -v ansible > /dev/null 2>&1; then
     sudo apt-add-repository --yes --update ppa:ansible/ansible
     sudo apt install ansible
 fi
+
+ansible-playbook ansible.yml
