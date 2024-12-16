@@ -41,6 +41,7 @@ lsp.on_attach(function(_, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
 
     vim.keymap.set('n', '<leader>ep', vim.diagnostic.open_float, { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>ec', vim.diagnostic.setqflist, { noremap = true, silent = true })
     vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, { noremap = true, silent = true })
     vim.keymap.set('n', ']e', vim.diagnostic.goto_next, { noremap = true, silent = true })
 end)
