@@ -38,14 +38,11 @@ cmp.setup({
 })
 
 lsp.on_attach(function(_, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
     lsp.default_keymaps({ buffer = bufnr })
 
-    vim.api.nvim_set_keymap('n', '<leader>ep', '<cmd>lua vim.diagnostic.open_float()<CR>',
-        { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>ep', vim.diagnostic.open_float, { noremap = true, silent = true })
+    vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, { noremap = true, silent = true })
+    vim.keymap.set('n', ']e', vim.diagnostic.goto_next, { noremap = true, silent = true })
 end)
 
 local signs = { Error = "", Warn = "", Hint = "󰌶", Info = "" }
