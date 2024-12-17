@@ -22,6 +22,12 @@ cmp.setup({
         { name = 'buffer' }
     },
 
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
+
     -- Preselect first item from autocompletion
     preselect = 'item',
     completion = {
