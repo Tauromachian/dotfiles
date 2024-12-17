@@ -86,12 +86,7 @@ require("lazy").setup({
     },
 
     -- Styles and looks
-    {
-        'nvim-lualine/lualine.nvim',
-        config = function()
-            require("lualine").setup { extensions = { 'nvim-tree' } }
-        end
-    },
+    'nvim-lualine/lualine.nvim',
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     {
