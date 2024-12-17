@@ -50,6 +50,5 @@ require('telescope').setup {
                 ["<c-d>"] = actions.delete_buffer,
             },
         },
-        layout_strategy = vim.o.lines > 70 and 'vertical' or 'horizontal',
     },
 }
