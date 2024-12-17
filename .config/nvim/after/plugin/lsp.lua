@@ -35,12 +35,12 @@ cmp.setup({
     },
 
     -- Sets simple autocompletion keybindings
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
         ['<Tab>'] = cmp_action.luasnip_jump_forward(),
         ['<S-Tab>'] = cmp_action.luasnip_jump_backward(),
-    }
+    })
 })
 
 lsp.on_attach(function(_, bufnr)
