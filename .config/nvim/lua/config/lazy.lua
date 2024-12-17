@@ -32,17 +32,13 @@ require("lazy").setup({
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" }
     },
-    {
-        'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
+    'nvim-telescope/telescope.nvim',
 
     -- LSPs and snippets
-    { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim' },
-    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v4.x' },
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    { 'VonHeikemen/lsp-zero.nvim',       branch = 'v4.x' },
     'neovim/nvim-lspconfig',
 
     "rafamadriz/friendly-snippets",
@@ -51,11 +47,8 @@ require("lazy").setup({
         version = "v2.*",
         build = "make install_jsregexp"
     },
-    {
-        'stevearc/conform.nvim',
-        opts = {},
-    },
 
+    'stevearc/conform.nvim',
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
     "hrsh7th/cmp-buffer",
