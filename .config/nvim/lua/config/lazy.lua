@@ -25,6 +25,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     'nvim-lua/plenary.nvim',
+    'nvim-tree/nvim-web-devicons',
 
     -- Navigation
     'nvim-tree/nvim-tree.lua',
@@ -94,7 +95,9 @@ require("lazy").setup({
     -- Styles and looks
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
+        config = function()
+            require("lualine").setup { extensions = { 'nvim-tree' } }
+        end
     },
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
