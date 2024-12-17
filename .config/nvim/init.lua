@@ -1,4 +1,5 @@
 vim.o.termguicolors = true
+vim.opt.signcolumn = 'yes'
 
 vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
