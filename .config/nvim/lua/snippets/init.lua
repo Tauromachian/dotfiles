@@ -17,6 +17,7 @@ local function merge(snippets_lists)
     return snippets
 end
 
+ls.add_snippets('typescriptreact', typescript_snippets)
 ls.add_snippets('javascript', javascript_snippets)
 ls.add_snippets('typescript', merge({ typescript_snippets, typeorm_snippets }))
 ls.add_snippets('vue', merge({ vue_snippets, javascript_snippets }))
