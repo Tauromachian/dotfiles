@@ -4,8 +4,6 @@ decorations = 'None'
 size = 13
 [font.normal]
 family = "CaskaydiaMono Nerd Font Propo"
-[terminal.shell]
-program = "tmux"
 [[keyboard.bindings]]
 key = "Tab"
 mods = "Control"
