@@ -5,6 +5,8 @@
 PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/deno:/home/jose/.config/lua
 export EDITOR=nvim;
 
+source ~/.dotfiles/.scripts/yd.sh
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
