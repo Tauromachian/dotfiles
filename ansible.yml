@@ -1,10 +1,10 @@
 - name: Ubuntu Workstation Setup
   hosts: localhost
   tasks:
-    - include: tasks/apt.yml
-    - include: tasks/gaming.yml
-    - inclue: tasks/flatpak.yml
-    - includ: tasks/homebrew.yml
-    - include: tasks/podman.yml
-    - include: tasks/dotfiles.yml
-    - include: tasks/nvidia.yml
+    - include_tasks: tasks/apt.yml
+    - include_tasks: tasks/gaming.yml
+    - include_tasks: tasks/flatpak.yml
+    - include_tasks: tasks/homebrew.yml
+    - include_tasks: tasks/podman.yml
+    - include_tasks: tasks/dotfiles.yml
+    - include_tasks: tasks/nvidia.yml
