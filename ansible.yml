@@ -1,6 +1,5 @@
 - name: Ubuntu Workstation Setup
   hosts: localhost
-  become: true
   tasks:
     - include: tasks/apt.yml
     - include: tasks/gaming.yml
