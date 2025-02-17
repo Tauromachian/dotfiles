@@ -2,8 +2,9 @@
 
 if ! command -v ansible > /dev/null 2>&1; then
     sudo apt install software-properties-common
-    sudo apt-add-repository --yes --update ppa:ansible/ansible
-    sudo apt install ansible
+    sudo apt-add-repository -y ppa:ansible/ansible
+    sudo apt update -y
+    sudo apt install -y ansible
 fi
 
 ansible-playbook ansible.yml
