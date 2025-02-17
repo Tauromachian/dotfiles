@@ -1,31 +1,34 @@
 - name: Add i386 architecture
   command: dpkg --add-architecture i386
 
-- name: Create keyrings directory
+- name: Create directoy for keyrings
   file:
     path: /etc/apt/keyrings
     state: directory
     mode: '0755'
 
-- name: Download WineHQ key
-  get_url:
-    url: https://dl.winehq.org/wine-builds/winehq.key
-    dest: /etc/apt/keyrings/winehq-archive.key
+- name: Download and Install WineHQ GPG key
+  shell: |
+    wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key -
+  args:
+    creates: /etc/apt/keyrings/winehq-archive.key
+  register: gpg_key_result
+  changed_when: gpg_key_result.rc == 0
 
-- name: Download WineHQ sources
-  get_url:
-    url: https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
-    dest: /etc/apt/sources.list.d/
+- name: Add repository
+  shell: |
+    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+  args:
+    creates: /etc/apt/sources.list.d/winehq-jammy.sources
+  register: download_result
+  changed_when: download_result.rc == 0
 
-- name: Add Lutris PPA
-  apt_repository:
-    repo: ppa:lutris-team/lutris
-    state: present
-
-- name: Install Wine and Lutris
+- name: Update cache
   apt:
-    name:
-      - winehq-stable
-      - lutris
+    update_cache: yes
+
+- name: Install wine
+  apt:
+    name: winehq-stable
     state: present
     install_recommends: yes
