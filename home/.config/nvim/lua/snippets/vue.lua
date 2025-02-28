@@ -16,11 +16,11 @@ local vue_scripts = {
         t("}"),
     }),
     s("vComputed", {
-        i(1, 'const '),
-        i(2, 'name'),
-        t("= computed(() => {)"),
-        i(3, '// content'),
-        t("}"),
+        t('const '),
+        i(1, 'name'),
+        t({ "= computed(() => {", '' }),
+        i(2, '// content'),
+        t({ '', "})" }),
     }),
     s("vComputed2", {
         i(1, 'const '),
