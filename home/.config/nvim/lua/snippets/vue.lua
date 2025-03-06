@@ -15,6 +15,10 @@ local vue_scripts = {
         i(3, '""'),
         t("}"),
     }),
+    s("vi18n", {
+        t({"import { useI18n } from 'vue-i18n';", ''}),
+        t('const { t } = useI18n();')
+    }),
     s("vRef", {
         t('const '),
         i(1, 'name'),
