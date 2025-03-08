@@ -15,8 +15,21 @@ local vue_scripts = {
         i(3, '""'),
         t("}"),
     }),
+    s("vBase", {
+        t("<script setup "),
+        i(1, 'lang="ts"'),
+        t("></script>"),
+        t({ '', '', '' }),
+        t("<template>"),
+        i(3, ""),
+        t("</template>"),
+        t({ '', '', '' }),
+        t("<style scoped "),
+        i(2, 'lang="scss"'),
+        t("></style>")
+    }),
     s("vi18n", {
-        t({"import { useI18n } from 'vue-i18n';", ''}),
+        t({ "import { useI18n } from 'vue-i18n';", '' }),
         t('const { t } = useI18n();')
     }),
     s("vRef", {
