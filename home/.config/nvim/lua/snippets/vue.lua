@@ -34,11 +34,13 @@ local vue_scripts = {
     s("vComputed2", {
         i(1, 'const '),
         i(2, 'name'),
-        t({ "= computed({", "get () {", "return" }),
+        t({ "= computed({", "get () {", "return " }),
         i(3, '// return'),
-        t({ "},", "set (val) {", "emit('" }),
-        i(4, "update:val"),
-        t("', val)"),
+        t({ '', "},", "set (val) {", "emit('update:" }),
+        i(4, "val"),
+        t("',"),
+        i(5, "val"),
+        t(")"),
         t({ "}", "})" }),
     }),
     s("defineModel", {
