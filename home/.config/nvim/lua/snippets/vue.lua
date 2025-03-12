@@ -35,7 +35,9 @@ local vue_scripts = {
     s("vRef", {
         t('const '),
         i(1, 'name'),
-        t("= ref()"),
+        t("= ref("),
+        i(2, ""),
+        t(")")
     }),
     s("vComputed", {
         t('const '),
