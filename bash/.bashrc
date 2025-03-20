@@ -3,7 +3,7 @@
 # for examples
 
 PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/deno:/home/jose/.config/lua:/home/jose/.config/.local/bin
-export EDITOR=nvim;
+export EDITOR=nvim-noplugin.sh;
 
 # If not running interactively, don't do anything
 case $- in
