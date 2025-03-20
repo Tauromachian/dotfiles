@@ -52,4 +52,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 require("config.lazy")
-require("snippets")
+
+local ok, _ = pcall(require, 'luasnip')
+
+if ok then
+    require("snippets")
+end
