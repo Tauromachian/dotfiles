@@ -77,6 +77,16 @@ end
 
 local nvim_lsp = require('lspconfig')
 
+nvim_lsp.lua_ls.setup({
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' },
+            },
+        },
+    },
+})
+
 nvim_lsp.tailwindcss.setup {
     root_dir = nvim_lsp.util.root_pattern("tailwind"),
 }
