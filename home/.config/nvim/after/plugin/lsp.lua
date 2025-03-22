@@ -1,6 +1,6 @@
 local lsp = require('lsp-zero')
+local luasnip = require('luasnip')
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -14,6 +14,16 @@ require('mason-lspconfig').setup({
         end,
     }
 })
+
+local function luasnip_jump(index)
+    return cmp.mapping(function(fallback)
+        if luasnip.jumpable(index) then
+            luasnip.jump(index)
+        else
+            fallback()
+        end
+    end, { 'i', 's' })
+end
 
 cmp.setup({
     sources = {
@@ -38,8 +48,8 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
-        ['<Tab>'] = cmp_action.luasnip_jump_forward(),
-        ['<S-Tab>'] = cmp_action.luasnip_jump_backward(),
+        ['<Tab>'] = luasnip_jump(1),
+        ['<S-Tab>'] = luasnip_jump(-1),
     })
 })
 
