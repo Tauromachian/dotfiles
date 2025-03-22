@@ -38,7 +38,6 @@ require("lazy").setup({
     -- LSPs and snippets
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    { 'VonHeikemen/lsp-zero.nvim',       branch = 'v4.x' },
     'neovim/nvim-lspconfig',
 
     "rafamadriz/friendly-snippets",
