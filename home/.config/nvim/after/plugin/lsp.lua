@@ -1,4 +1,3 @@
-local lsp = require('lsp-zero')
 local luasnip = require('luasnip')
 local cmp = require('cmp')
 
@@ -6,13 +5,7 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    handlers = {
-        lsp.default_setup,
-        lua_ls = function()
-            local lua_opts = lsp.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
-        end,
-    }
+    ensure_installed = { 'lua_ls' },
 })
 
 local function luasnip_jump(index)
