@@ -120,3 +120,5 @@ usage: yd [type] [format] [quality] [url]
     echo $cmd
     eval $cmd
 }
+
+yd
