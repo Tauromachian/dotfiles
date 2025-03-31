@@ -1,0 +1,27 @@
+#!/bin/bash
+
+SESSION=$(tmux display-message -p '#{session_name}')
+WINDOW=$(tmux display-message -p '#{window_index}')
+
+vue() {
+    tmux split-window -h -t "$SESSION:$WINDOW"
+    tmux split-window -v -t $SESSION:1.1
+
+    tmux send-keys -t "$SESSION:$WINDOW.1" 'y dev' C-m
+    tmux send-keys -t "$SESSION:$WINDOW.2" 'v .' C-m
+
+    tmux select-pane -t "$SESSION:$WINDOW.2"
+}
+
+case "$1" in
+    -help)
+        echo "Usage: $0 [vue]"
+        ;;
+    vue)
+        vue
+        ;;
+    *)
+        echo "Usage: $0 [-help]"
+        exit 1
+        ;;
+esac
