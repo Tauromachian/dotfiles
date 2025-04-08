@@ -87,6 +87,7 @@ nvim_lsp.lua_ls.setup({
     },
 })
 
+nvim_lsp.eslint.setup({})
 nvim_lsp.emmet_ls.setup({})
 nvim_lsp.tailwindcss.setup {
     root_dir = nvim_lsp.util.root_pattern("tailwind"),
