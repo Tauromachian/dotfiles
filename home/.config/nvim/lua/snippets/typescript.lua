@@ -41,6 +41,14 @@ local typescript = {
         i(5, ''),
         t("}"),
     }),
+    s("type", {
+        i(1, 'export '),
+        t("type "),
+        i(2, 'name'),
+        t({ "= {", '' }),
+        i(3, '// definition'),
+        t({ '', "}" })
+    }),
     s("cw", {
         t("console.warn("),
         i(1, ''),
