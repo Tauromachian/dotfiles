@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ ! -d "$HOME/.deno" ]; then
+    mkdir -p "$HOME/.deno"
+fi
+
 podman run \
     --interactive \
     --tty \
