@@ -14,4 +14,4 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
-vim.api.nvim_set_keymap('n', '<C-b>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
