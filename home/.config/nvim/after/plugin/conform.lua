@@ -7,7 +7,7 @@ require("conform").setup({
         javascriptreact = { "prettier" },
         vue = { "prettier" },
         markdown = { "prettier" },
-        css = { "prettier" },
+        css = { "prettier", "deno_fmt", stop_after_first = true },
         json = { "prettier", "biome", "deno_fmt", stop_after_first = true },
         scss = { "prettier" },
         less = { "prettier" },
