@@ -4,13 +4,24 @@ if [ ! -d "$HOME/.deno" ]; then
     mkdir -p "$HOME/.deno"
 fi
 
-podman run \
-    --interactive \
-    --tty \
-    --rm \
-    --network host \
-    --volume $PWD:/app \
-    --volume $HOME/.deno:/deno-dir \
-    --workdir /app \
-    docker.io/denoland/deno:latest deno \
-    "$@"
+if [ -t 1 ]; then
+    podman run \
+        --interactive \
+        --tty \
+        --rm \
+        --network host \
+        --volume $PWD:/app \
+        --volume $HOME/.deno:/deno-dir \
+        --workdir /app \
+        docker.io/denoland/deno:latest deno \
+        "$@"
+else 
+    podman run \
+        --rm \
+        --network host \
+        --volume $PWD:/app \
+        --volume $HOME/.deno:/deno-dir \
+        --workdir /app \
+        docker.io/denoland/deno:latest deno \
+        "$@"
+fi
