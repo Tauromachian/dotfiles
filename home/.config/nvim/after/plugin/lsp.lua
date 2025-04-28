@@ -1,11 +1,61 @@
 local luasnip = require('luasnip')
 local cmp = require('cmp')
+local nvim_lsp = require('lspconfig')
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = { 'lua_ls', 'eslint', 'emmet_ls', 'tailwindcss', 'ts_ls' },
+    handlers = {
+        function(server_name)
+            require("lspconfig")[server_name].setup {}
+        end,
+        ['denols'] = function()
+            nvim_lsp.denols.setup {
+                root_dir = nvim_lsp.util.root_pattern("deno.json"),
+            }
+        end,
+        ['lua_ls'] = function()
+            nvim_lsp.lua_ls.setup {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { 'vim' },
+                        },
+                    },
+                },
+            }
+        end,
+        ['tailwindcss'] = function()
+            nvim_lsp.tailwindcss.setup {
+                root_dir = nvim_lsp.util.root_pattern("tailwind"),
+            }
+        end,
+        ['ts_ls'] = function()
+            local vue_typescript_plugin = require('mason-registry')
+                .get_package('vue-language-server')
+                :get_install_path()
+                .. '/node_modules/@vue/language-server'
+                .. '/node_modules/@vue/typescript-plugin'
+
+
+            nvim_lsp.ts_ls.setup {
+                init_options = {
+                    plugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = vue_typescript_plugin,
+                            languages = { 'javascript', 'typescript', 'vue' }
+                        },
+                    }
+                },
+                filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
+                root_dir = nvim_lsp.util.root_pattern("package.json"),
+                single_file_support = false,
+            }
+        end
+    },
 })
 
 local function luasnip_jump(index)
@@ -79,46 +129,3 @@ vim.diagnostic.config({
         },
     },
 })
-
-local nvim_lsp = require('lspconfig')
-
-nvim_lsp.lua_ls.setup({
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' },
-            },
-        },
-    },
-})
-
-nvim_lsp.eslint.setup({})
-nvim_lsp.emmet_ls.setup({})
-nvim_lsp.tailwindcss.setup {
-    root_dir = nvim_lsp.util.root_pattern("tailwind"),
-}
-
-local vue_typescript_plugin = require('mason-registry')
-    .get_package('vue-language-server')
-    :get_install_path()
-    .. '/node_modules/@vue/language-server'
-    .. '/node_modules/@vue/typescript-plugin'
-
-nvim_lsp.ts_ls.setup {
-    init_options = {
-        plugins = {
-            {
-                name = "@vue/typescript-plugin",
-                location = vue_typescript_plugin,
-                languages = { 'javascript', 'typescript', 'vue' }
-            },
-        }
-    },
-    filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
-    single_file_support = false,
-}
-
-nvim_lsp.denols.setup {
-    root_dir = nvim_lsp.util.root_pattern("deno.json"),
-}
