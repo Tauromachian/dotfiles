@@ -1,6 +1,6 @@
 local luasnip = require('luasnip')
 local cmp = require('cmp')
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -12,12 +12,12 @@ require('mason-lspconfig').setup({
             require("lspconfig")[server_name].setup {}
         end,
         ['denols'] = function()
-            nvim_lsp.denols.setup {
-                root_dir = nvim_lsp.util.root_pattern("deno.json"),
+            lspconfig.denols.setup {
+                root_dir = lspconfig.util.root_pattern("deno.json"),
             }
         end,
         ['lua_ls'] = function()
-            nvim_lsp.lua_ls.setup {
+            lspconfig.lua_ls.setup {
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -28,8 +28,8 @@ require('mason-lspconfig').setup({
             }
         end,
         ['tailwindcss'] = function()
-            nvim_lsp.tailwindcss.setup {
-                root_dir = nvim_lsp.util.root_pattern("tailwind"),
+            lspconfig.tailwindcss.setup {
+                root_dir = lspconfig.util.root_pattern("tailwind"),
             }
         end,
         ['ts_ls'] = function()
@@ -40,7 +40,7 @@ require('mason-lspconfig').setup({
                 .. '/node_modules/@vue/typescript-plugin'
 
 
-            nvim_lsp.ts_ls.setup {
+            lspconfig.ts_ls.setup {
                 init_options = {
                     plugins = {
                         {
@@ -51,7 +51,7 @@ require('mason-lspconfig').setup({
                     }
                 },
                 filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
-                root_dir = nvim_lsp.util.root_pattern("package.json"),
+                root_dir = lspconfig.util.root_pattern("package.json"),
                 single_file_support = false,
             }
         end
