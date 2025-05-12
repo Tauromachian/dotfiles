@@ -1,6 +1,6 @@
 #!/bin/bash
 
-session=$(find ~/Desktop/Trabajos ~/Desktop/Playground ~/.dotfiles -mindepth 1 -maxdepth 2 -type d | fzf)
+session=$(find ~/Desktop/Trabajos ~/Desktop/Playground ~/ -mindepth 1 -maxdepth 2 -type d | fzf)
 session_name=$(basename "$session" | tr . _)
 
 if [ -z "$session" ]; then
