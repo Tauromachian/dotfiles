@@ -1,11 +1,9 @@
 [user]
 	name = Jose Garcia
+	email = 54786476+Tauromachian@users.noreply.github.com
 
 [rerere]
     enabled = true
-
-[includeIf "hasconfig:remote.*.url:https://**github.com/**"]
-    path = ~/.gitconfig-github
 
 [includeIf "hasconfig:remote.*.url:git@bitbucket.org:*/**"]
     path = ~/.dotfiles/dotfiles-personal/.gitconfig-bitbucket
