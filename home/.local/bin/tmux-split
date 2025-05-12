@@ -22,7 +22,7 @@ deno() {
     tmux send-keys -t "$SESSION:$WINDOW.2" 'v .' C-m
     tmux send-keys -t "$SESSION:$WINDOW.3" 'deno run watch' C-m
 
-    tmux select-pane -t "$SESSION:$WINDOW.3"
+    tmux select-pane -t "$SESSION:$WINDOW.2"
 }
 
 case "$1" in
