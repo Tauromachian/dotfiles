@@ -1,5 +1,3 @@
-alias sudo="sudo "
-
 alias v="nvim"
 
 alias docker=podman
