@@ -1,5 +1,4 @@
 require("lualine").setup {
-    extensions = { 'nvim-tree' },
     sections = {
         lualine_b = {
             {
