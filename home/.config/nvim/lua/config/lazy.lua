@@ -28,7 +28,6 @@ require("lazy").setup({
     'nvim-tree/nvim-web-devicons',
 
     -- Navigation
-    'nvim-tree/nvim-tree.lua',
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
