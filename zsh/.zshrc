@@ -25,7 +25,6 @@ zinit light-mode for \
 
 PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/.local/bin
 export EDITOR=nvim-noplugin.sh;
-export SHELL=/usr/bin/zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
