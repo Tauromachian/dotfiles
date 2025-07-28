@@ -1,3 +1,5 @@
+#!/bin/lua
+
 local function set_mouse_direction(direction)
     if direction ~= 'left' and direction ~= 'right' then
         print('Invalid argument, only "left" or "right" valid')
