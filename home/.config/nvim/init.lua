@@ -49,6 +49,35 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end
 })
 
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'qf',
+    desc = 'Remove quickfix item under cursor',
+    callback = function()
+        vim.keymap.set('n', 'dd', function()
+            local qf_list = vim.fn.getqflist()
+
+            local current_line = vim.fn.line('.')
+
+            if qf_list[current_line] then
+                table.remove(qf_list, current_line)
+
+                vim.fn.setqflist(qf_list, 'r')
+                vim.cmd('copen')
+
+                local new_line = math.min(current_line, #qf_list)
+                if new_line > 0 then
+                    vim.fn.cursor(new_line, 1)
+                end
+            end
+        end, {
+            buffer = true,
+            noremap = true,
+            silent = true
+        })
+    end
+})
+
 require("config.lazy")
 
 local ok, _ = pcall(require, 'luasnip')
