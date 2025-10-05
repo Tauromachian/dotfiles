@@ -52,6 +52,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'qf',
+    desc = 'Attach keymaps for quickfix list',
     callback = function()
         vim.keymap.set('n', 'dd', function()
             local qf_list = vim.fn.getqflist()
