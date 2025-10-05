@@ -52,7 +52,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'qf',
-    desc = 'Remove quickfix item under cursor',
     callback = function()
         vim.keymap.set('n', 'dd', function()
             local qf_list = vim.fn.getqflist()
@@ -73,7 +72,8 @@ vim.api.nvim_create_autocmd('FileType', {
         end, {
             buffer = true,
             noremap = true,
-            silent = true
+            silent = true,
+            desc = 'Remove quickfix item under cursor',
         })
     end
 })
