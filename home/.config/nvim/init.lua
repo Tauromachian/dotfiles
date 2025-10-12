@@ -36,8 +36,8 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
 
-vim.keymap.set("v", "<leader>p", "\"_dP", { noremap = true })
-vim.keymap.set("n", "<leader>d", "\"_d", { noremap = true })
+vim.keymap.set("v", "<leader>p", "\"_dP")
+vim.keymap.set("n", "<leader>d", "\"_d")
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
@@ -69,7 +69,6 @@ vim.api.nvim_create_autocmd('FileType', {
             end
         end, {
             buffer = true,
-            noremap = true,
             silent = true,
             desc = 'Remove quickfix item under cursor',
         })
