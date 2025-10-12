@@ -63,12 +63,9 @@ vim.api.nvim_create_autocmd('FileType', {
                 table.remove(qf_list, current_line)
 
                 vim.fn.setqflist(qf_list, 'r')
-                vim.cmd('copen')
 
                 local new_line = math.min(current_line, #qf_list)
-                if new_line > 0 then
-                    vim.fn.cursor(new_line, 1)
-                end
+                vim.fn.cursor(new_line, 1)
             end
         end, {
             buffer = true,
