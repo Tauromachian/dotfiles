@@ -40,6 +40,15 @@ local javascript = {
         i(1, ''),
         t(")"),
     }),
+    s("method", {
+        i(1, "async "),
+        i(2, "name "),
+        t("("),
+        i(3, "argument"),
+        t({ ") {", '' }),
+        i(4, ""),
+        t({ "}" })
+    })
 }
 
 return javascript
