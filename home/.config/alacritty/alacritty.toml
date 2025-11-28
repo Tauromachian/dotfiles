@@ -1,7 +1,7 @@
 [window]
 decorations = 'None'
 [font]
-size = 13
+size = 14
 [font.normal]
 family = "CaskaydiaMono Nerd Font Propo"
 [[keyboard.bindings]]
