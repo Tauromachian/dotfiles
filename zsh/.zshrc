@@ -39,6 +39,10 @@ if command -v tmux &> /dev/null && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; th
   tmux
 fi
 
+gcc_run() {
+  command gcc $1 -o temp-file && ./temp-file && rm temp-file
+}
+
 apt() { 
   command nala "$@"
 }
