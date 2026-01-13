@@ -6,6 +6,7 @@ alias docker-compose=podman-compose
 alias nr="npm run"
 alias ni="corepack npm install"
 alias y="corepack yarn"
+alias pn="corepack pnpm"
 
 alias ghost:start="ghost start --no-setup-linux-user"
 
