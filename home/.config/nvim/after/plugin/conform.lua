@@ -16,6 +16,7 @@ require("conform").setup({
         html = { "prettier", "deno_fmt" },
         php = { "php_cs_fixer" },
         blade = { "blade-formatter" },
+        astro = { 'prettier' }
     },
 
 
