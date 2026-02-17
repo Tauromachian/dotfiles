@@ -81,7 +81,7 @@ require("lazy").setup({
     -- Styles and looks
     'nvim-lualine/lualine.nvim',
 
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
     {
         'rebelot/kanagawa.nvim',
         config = function()
