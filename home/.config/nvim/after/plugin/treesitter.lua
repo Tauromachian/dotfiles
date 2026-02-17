@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter'.setup {
     ensure_installed = { "lua", "javascript", "typescript", "php", "yaml", "astro", "vue", "html" },
 
     indent = { enable = true },
