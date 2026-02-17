@@ -52,11 +52,6 @@ require("lazy").setup({
     "hrsh7th/cmp-buffer",
     'saadparwaiz1/cmp_luasnip',
 
-    {
-        'Exafunction/codeium.vim',
-        event = 'BufEnter'
-    },
-
     -- Git
     'lewis6991/gitsigns.nvim',
     'tpope/vim-fugitive',
