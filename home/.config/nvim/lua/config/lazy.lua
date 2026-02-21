@@ -28,10 +28,7 @@ require("lazy").setup({
     'nvim-tree/nvim-web-devicons',
 
     -- Navigation
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-    },
+    { "ThePrimeagen/harpoon",           branch = "harpoon2", },
     'nvim-telescope/telescope.nvim',
 
     -- LSPs and snippets
@@ -79,8 +76,6 @@ require("lazy").setup({
     },
 
     -- Styles and looks
-    'nvim-lualine/lualine.nvim',
-
     { "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
     {
         'rebelot/kanagawa.nvim',
