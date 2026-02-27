@@ -67,6 +67,16 @@ local vue_scripts = {
         i(3, '""'),
         t({ "", "})" }),
     }),
+    s("vbasets", {
+        t({ '<script setup lang="ts">', '' }),
+        t({ '</script>', '' }),
+        t({ '', '' }),
+        t({ '<template>', '' }),
+        t({ '  <div></div>', '' }),
+        t({ '</template>', '' }),
+        t({ '', '' }),
+        t({ '<style scoped></style>' })
+    })
 }
 
 return vue_scripts
