@@ -28,7 +28,7 @@ require("lazy").setup({
     'nvim-tree/nvim-web-devicons',
 
     -- Navigation
-    { "ThePrimeagen/harpoon",           branch = "harpoon2", },
+    { "ThePrimeagen/harpoon",           branch = "harpoon2", event = "VeryLazy" },
     'nvim-telescope/telescope.nvim',
 
     -- LSPs and snippets
@@ -43,25 +43,27 @@ require("lazy").setup({
         build = "make install_jsregexp"
     },
 
-    'stevearc/conform.nvim',
+    { 'stevearc/conform.nvim',   event = "BufWritePre" },
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
     "hrsh7th/cmp-buffer",
     'saadparwaiz1/cmp_luasnip',
 
     -- Git
-    'lewis6991/gitsigns.nvim',
-    'tpope/vim-fugitive',
+    { 'lewis6991/gitsigns.nvim', event = "BufReadPre" },
+    { 'tpope/vim-fugitive',      cmd = { "Git", "G" } },
 
     -- Utilities
     {
         'windwp/nvim-autopairs',
+        event = 'InsertEnter',
         config = function()
             require("nvim-autopairs").setup {}
         end
     },
     {
         'windwp/nvim-ts-autotag',
+        event = 'BufReadPre',
         config = function()
             require('nvim-ts-autotag').setup()
         end
