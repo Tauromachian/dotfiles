@@ -41,6 +41,14 @@ vim.lsp.config['ts_ls'] = {
     single_file_support = false,
 }
 
+vim.lsp.config['vue_ls'] = {
+    settings = {
+        emmet = {
+            showExpandedAbbreviation = "never",
+        },
+    },
+}
+
 local function luasnip_jump(index)
     return cmp.mapping(function(fallback)
         if luasnip.jumpable(index) then
