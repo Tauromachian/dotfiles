@@ -3,7 +3,7 @@ local cmp = require('cmp')
 
 require('luasnip.loaders.from_vscode').lazy_load()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'lua_ls', 'eslint', 'emmet_ls', 'tailwindcss', 'ts_ls', 'vue_ls' },
+    ensure_installed = { 'lua_ls', 'eslint', 'emmet_language_server', 'tailwindcss', 'ts_ls', 'vue_ls' },
 })
 
 vim.lsp.config("lua_ls", {
