@@ -75,7 +75,7 @@ local vue_scripts = {
         t({ '  <div></div>', '' }),
         t({ '</template>', '' }),
         t({ '', '' }),
-        t({ '<style scoped></style>' })
+        i(1, '<style scoped></style>')
     })
 }
 
