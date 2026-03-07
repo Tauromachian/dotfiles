@@ -13,3 +13,6 @@ window-decoration = false
 keybind = ctrl+tab=text:\x1f
 
 confirm-close-surface = false
+
+cursor-color = cell-foreground
+cursor-text = cell-background
