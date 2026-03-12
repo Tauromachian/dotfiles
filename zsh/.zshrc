@@ -26,6 +26,27 @@ zinit light-mode for \
 PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/.local/bin
 export EDITOR=nvim-noplugin;
 
+# Change cursor shape for vi modes (with tmux support)
+function zle-keymap-select {
+    if [[ ${KEYMAP} == vicmd ]] ||
+       [[ $1 = 'block' ]]; then
+        echo -ne '\e[2 q'  # block in normal mode
+    elif [[ ${KEYMAP} == main ]] ||
+         [[ ${KEYMAP} == viins ]] ||
+         [[ ${KEYMAP} == '' ]] ||
+         [[ $1 = 'line' ]]; then
+        echo -ne '\e[6 q'  # bar in insert mode
+    fi
+}
+zle -N zle-keymap-select
+
+# Apply on fresh line
+function zle-line-init {
+    zle -K viins  # default to insert
+    echo -ne '\e[6 q'
+}
+zle -N zle-line-init
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
