@@ -126,9 +126,9 @@ sudo() {
   fi
 }
 
-FNM_PATH="/home/jose/.local/share/fnm"
+FNM_PATH="/home/$USER/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/jose/.local/share/fnm:$PATH"
+  export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env --use-on-cd --shell bash)"
 fi
 
