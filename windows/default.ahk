@@ -8,6 +8,10 @@
     WinClose "A"
 }
 
+^!Up:: {
+    Send "#{Tab}"
+}
+
 #1:: SwitchToDesktop(1)
 #2:: SwitchToDesktop(2)
 #3:: SwitchToDesktop(3)
