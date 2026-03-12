@@ -127,7 +127,10 @@ sudo() {
 }
 
 FNM_PATH="/home/jose/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/jose/.local/share/fnm:$PATH"
+  eval "$(fnm env --use-on-cd --shell bash)"
+fi
 
-eval "$(fnm env --use-on-cd --shell bash)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(starship init bash)"
