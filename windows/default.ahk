@@ -4,6 +4,10 @@
     Run "alacritty.exe"
 }
 
+#m:: {
+    WinMaximize "A"
+}
+
 #+c:: {
     WinClose "A"
 }
