@@ -39,3 +39,7 @@ GoToDesktop(index) {
 ^!Up:: {
     Send "#{Tab}"
 }
+
+#k:: {
+    Send "!{Tab}"
+}
