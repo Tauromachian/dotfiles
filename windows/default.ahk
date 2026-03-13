@@ -50,5 +50,9 @@ SwitchToDesktop(n) {
         current--
         Sleep(50)
     }
+
+    windows := WinGetList()
+    if (windows.Length >= 1)
+        WinActivate windows[1]
 }
 
