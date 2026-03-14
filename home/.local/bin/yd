@@ -1,124 +1,63 @@
-#!/bin/bash
+#!/usr/bin/env lua
 
-yd() {
-    local cmd=yt-dlp
-    local format=video
-    local quality=720
-    local type=single
-    local url
-    local items
-    local start
-    local ext=bestvideo
+local LONELY_FLAGS = { '--only-audio' }
 
-    while [[ $# -gt 0 ]]; do
-        case $1 in
-        h | help)
-            echo "\
-usage: yd [type] [format] [quality] [url]
-    type    = single (default) | playlist
-    format  = format | subtitles | audio | video (default)
-    quality = 144p | 240p | 360p | 480p | 720p (default) | 1024p
+local function includes(table, value)
+    for _, tableValue in ipairs(table) do
+        if tableValue == value then
+            return true
+        end
+    end
 
-    options:
-    -i --items  Specify which items of a playlist to download (e.g., '1-3,7,10')
-    -s --start  Specify from which item of a playlist start to download (e.g., '3')
-    -e --ext    Specify the extension format for video downloads (e.g., 'mp4', 'mkv')
-"
-            return
-            ;;
-        f | format)
-            format=format
-            shift
-            ;;
-        a | audio)
-            format=audio
-            shift
-            ;;
-        v | video)
-            format=video
-            shift
-            ;;
-        subs | subtitles)
-            format=subtitles
-            shift
-            ;;
-        144p | 240p | 360p | 480p | 720p | 1024p)
-            quality="${1%p}"
-            shift
-            ;;
-        s | single)
-            type=single
-            shift
-            ;;
-        p | playlist)
-            type=playlist
-            shift
-            ;;
-        -i | --items)
-            shift
-            items=$1
-            shift
-            ;;
-        -s | --start)
-            shift
-            start=$1
-            shift
-            ;;
-        -e | --ext)
-            shift
-            ext=$1
-            shift
-            ;;
-        *)
-            url=$1
-            shift
-            ;;
-        esac
-    done
+    return false
+end
 
-    case $format in
-    format)
-        cmd+=" --list-formats"
-        ;;
-    subtitles)
-        cmd+=" --write-auto-sub --sub-format 'best' --sub-lang 'en,es' --skip-download"
-        ;;
-    audio)
-        cmd+=" --format 'bestaudio' --embed-chapters"
-        ;;
-    video)
-        cmd+=" --format '${ext}[height<=${quality}]+bestaudio' --embed-subs --embed-thumbnail --embed-chapters --write-auto-sub --sub-format 'best' --sub-lang 'en,es'"
-        ;;
-    esac
+local function getCommandByFlag(flag, value)
+    if not value then
+        value = ''
+    end
 
-    if [[ $format != format ]]; then
-        case $type in
-        single)
-            cmd+=" --no-playlist --output '$HOME/Movies/youtube-dl/%(uploader)s/%(title)s.%(ext)s'"
-            ;;
-        playlist)
-            cmd+=" --output '$HOME/Movies/youtube-dl/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'"
-            ;;
-        esac
-    fi
+    local commands = {
+        ['--only-audio'] = '-f bestaudio --extract-audio --audio-format mp3 --audio-quality 0',
+        ['--output'] = '--output ' .. value,
+        ['-o'] = '--output ' .. value,
+    }
 
-    if [[ -n "$items" ]]; then
-        cmd+=" --playlist-items $items"
-    fi
+    return commands[flag]
+end
 
-    if [[ -n "$start" ]]; then
-        cmd+=" --playlist-start $start"
-    fi
+local function yd(args)
+    local cmd = "yt-dlp"
+    local url = args[1]
 
-    if [ -z "$url" ]; then
-        echo "Missing url"
+
+    if not url then
+        print('An URL is required')
         return
-    fi
+    end
+    table.remove(args, 1)
 
-    cmd+=" '$url'"
+    -- Handle default case (Video + audio)
+    -- if #args == 0 then
+    -- end
 
-    echo $cmd
-    eval $cmd
-}
+    local i = 1
+    while args[i] do
+        if (includes(LONELY_FLAGS, args[i])) then
+            cmd = cmd .. ' ' .. getCommandByFlag(args[i])
+        else
+            cmd = cmd .. ' ' .. getCommandByFlag(args[i], args[i + 1])
+            i = i + 1
+        end
 
-yd
+        i = i + 1
+    end
+
+    cmd = cmd .. ' ' .. url
+
+    print('yt-dlp executed:')
+    print(cmd)
+    os.execute(cmd)
+end
+
+yd(arg)
