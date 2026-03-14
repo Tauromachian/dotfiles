@@ -5,6 +5,9 @@
 PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/.local/bin
 export EDITOR=nvim-noplugin;
 
+# Set Vi mode
+set -o vi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
