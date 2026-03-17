@@ -24,14 +24,14 @@ vim.lsp.config['tailwindcss']           = {
 }
 
 local mason_root                        = require("mason.settings").current.install_root_dir
-local vue_typescript_plugin             = mason_root .. '/node_modules/@vue/typescript-plugin'
+local vue_ts_plugin_location            = mason_root .. '/node_modules/@vue/typescript-plugin'
 
 vim.lsp.config['ts_ls']                 = {
     init_options = {
         plugins = {
             {
                 name = "@vue/typescript-plugin",
-                location = vue_typescript_plugin,
+                location = vue_ts_plugin_location,
                 languages = { 'javascript', 'typescript', 'vue' }
             },
         }
