@@ -15,18 +15,18 @@ vim.lsp.config("lua_ls", {
     }
 })
 
-vim.lsp.config['denols'] = {
+vim.lsp.config['denols']                = {
     root_markers = { 'deno.json' }
 }
 
-vim.lsp.config['tailwindcss'] = {
+vim.lsp.config['tailwindcss']           = {
     root_markers = { 'tailwind.config.js' }
 }
 
-local mason_root = require("mason.settings").current.install_root_dir
-local vue_typescript_plugin = mason_root .. '/node_modules/@vue/typescript-plugin'
+local mason_root                        = require("mason.settings").current.install_root_dir
+local vue_typescript_plugin             = mason_root .. '/node_modules/@vue/typescript-plugin'
 
-vim.lsp.config['ts_ls'] = {
+vim.lsp.config['ts_ls']                 = {
     init_options = {
         plugins = {
             {
@@ -41,12 +41,8 @@ vim.lsp.config['ts_ls'] = {
     single_file_support = false,
 }
 
-vim.lsp.config['vue_ls'] = {
-    settings = {
-        emmet = {
-            showExpandedAbbreviation = "never",
-        },
-    },
+vim.lsp.config['emmet_language_server'] = {
+    filetypes = { 'astro', 'css', 'eruby', 'html', 'htmlangular', 'htmldjango', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'typescriptreact' }
 }
 
 local function luasnip_jump(index)
