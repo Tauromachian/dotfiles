@@ -53,3 +53,9 @@ $env.PROMPT_INDICATOR = ""
 $env.PROMPT_INDICATOR_VI_INSERT = ": "
 $env.PROMPT_INDICATOR_VI_NORMAL = "〉"
 $env.PROMPT_MULTILINE_INDICATOR = "::: "
+
+let fnm_path = $"($env.HOME)/.local/share/fnm"
+if ($fnm_path | path exists) {
+    $env.PATH = ($env.PATH | prepend $fnm_path)
+    ^fnm env --shell bash | lines | where $it starts-with export | parse 'export {key}="{value}"' | where key != PATH | transpose -r -d | load-env
+}
