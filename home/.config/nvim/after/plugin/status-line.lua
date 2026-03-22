@@ -1,5 +1,6 @@
 function _G.Statusline()
-    local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
+    -- local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
+    local branch = vim.fn.system("git branch --show-current err> /dev/null | tr -d '\n'")
 
     local branch_name = branch == '' and "NoGit" or branch
 
