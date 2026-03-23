@@ -23,8 +23,8 @@ vim.lsp.config['tailwindcss']           = {
     root_markers = { 'tailwind.config.js' }
 }
 
-local mason_root                        = require("mason.settings").current.install_root_dir
-local vue_ts_plugin_location            = mason_root .. '/node_modules/@vue/typescript-plugin'
+local vue_ls_path                       = vim.fn.expand("$MASON/packages/vue-language-server")
+local vue_ts_plugin_location            = vue_ls_path .. "/node_modules/@vue/language-server"
 
 vim.lsp.config['ts_ls']                 = {
     init_options = {
