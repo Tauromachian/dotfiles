@@ -7,3 +7,6 @@
 
 [includeIf "hasconfig:remote.*.url:git@bitbucket.org:*/**"]
     path = ~/.dotfiles/dotfiles-personal/.gitconfig-bitbucket
+
+[includeIf "hasconfig:remote.*.url:gitlab.radissonhotels.com:*/**"]
+    path = ~/.dotfiles/dotfiles-personal/.gitconfig-ey
