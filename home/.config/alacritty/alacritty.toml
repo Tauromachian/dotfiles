@@ -8,3 +8,8 @@ family = "CaskaydiaMono Nerd Font Propo"
 key = "Tab"
 mods = "Control"
 chars = "\uE002"
+# Useful for Windows
+# [[keyboard.bindings]]
+# key = "Space"
+# mods = "Control"
+# chars = "\u0000"
