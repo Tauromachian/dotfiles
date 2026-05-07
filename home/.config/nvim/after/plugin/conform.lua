@@ -9,7 +9,7 @@ require("conform").setup({
         markdown = { "prettier" },
         css = { "prettier", "deno_fmt", stop_after_first = true },
         json = { "prettier", "biome", "deno_fmt", stop_after_first = true },
-        scss = { "prettier" },
+        scss = { "prettier", "deno_fmt", stop_after_first = true },
         less = { "prettier" },
         yaml = { "prettier" },
         graphql = { "prettier" },
