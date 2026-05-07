@@ -29,7 +29,13 @@ require("lazy").setup({
 
     -- Navigation
     { "ThePrimeagen/harpoon",           branch = "harpoon2", event = "VeryLazy" },
-    'nvim-telescope/telescope.nvim',
+    {
+        'nvim-telescope/telescope.nvim',
+        version = '*',
+        dependencies = {
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
+    },
 
     -- LSPs and snippets
     'neovim/nvim-lspconfig',
