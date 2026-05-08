@@ -1,4 +1,4 @@
-$env.config.edit_mode = 'vi'
+use "~/.dotfiles/dotfiles-personal/hasten-ey.nu"
 
 let pwdRes = (pwd)
 
