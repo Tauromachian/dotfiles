@@ -63,9 +63,7 @@ require("lazy").setup({
     {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
-        config = function()
-            require("nvim-autopairs").setup {}
-        end
+        config = true
     },
     {
         'windwp/nvim-ts-autotag',
