@@ -30,6 +30,7 @@ if (which tmux | is-not-empty) and ($env.TMUX? | is-empty) {
 }
  
 $env.config.edit_mode = 'vi'
+$env.EDITOR = "nvim --noplugin"
 
 # In ~/.config/nushell/env.nu
 $env.HOMEBREW_PREFIX = "/home/linuxbrew/.linuxbrew"
