@@ -26,6 +26,21 @@ vim.keymap.set('n', '<C-_>', buffer_searcher, { silent = true })
 -- The code bellow opens in nvim tree the file location after the same is found in telescope
 require('telescope').setup {
     defaults = {
+        preview = {
+            filetype_hook = function(filepath, bufnr, opts)
+                local excluded = { svg = true }
+                local ext = filepath:match("%.(%w+)$")
+                if ext and excluded[ext:lower()] then
+                    require("telescope.previewers.utils").set_preview_message(
+                        bufnr,
+                        opts.winid,
+                        string.format("Preview disabled for .%s files", ext)
+                    )
+                    return false
+                end
+                return true
+            end,
+        },
         mappings = {
             i = {
                 ["<c-d>"] = actions.delete_buffer,

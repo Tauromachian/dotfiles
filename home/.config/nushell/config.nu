@@ -28,6 +28,8 @@ def apt [...args] {
 if (which tmux | is-not-empty) and ($env.TMUX? | is-empty) {
     tmux
 }
+ 
+$env.config.edit_mode = 'vi'
 
 # In ~/.config/nushell/env.nu
 $env.HOMEBREW_PREFIX = "/home/linuxbrew/.linuxbrew"
