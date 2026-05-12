@@ -87,7 +87,7 @@ require("lazy").setup({
         }
     },
 
-    { "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate", branch = 'master' },
+    { "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
     {
         'rebelot/kanagawa.nvim',
         config = function()
