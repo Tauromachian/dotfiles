@@ -51,3 +51,6 @@ if test -d $fnm_path
     fish_add_path $fnm_path
     fnm env --shell fish | source
 end
+
+# opencode
+fish_add_path /home/jose/.opencode/bin
