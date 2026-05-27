@@ -73,6 +73,38 @@ vim.api.nvim_create_autocmd('FileType', {
             silent = true,
             desc = 'Remove quickfix item under cursor',
         })
+
+        -- Visual mode: delete all selected items
+        vim.keymap.set('v', 'd', function()
+            local qf_list = vim.fn.getqflist()
+            local first_line = vim.fn.line('v')
+            local last_line = vim.fn.line('.')
+
+            -- Normalize order in case selection was made upward
+            if first_line > last_line then
+                first_line, last_line = last_line, first_line
+            end
+
+            -- Remove from bottom to top so indices don't shift
+            for i = last_line, first_line, -1 do
+                if qf_list[i] then
+                    table.remove(qf_list, i)
+                end
+            end
+
+            vim.fn.setqflist(qf_list, 'r')
+
+            -- Exit visual mode and reposition cursor
+            vim.api.nvim_feedkeys(
+                vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false
+            )
+            local new_line_number = math.min(first_line, #qf_list)
+            vim.fn.cursor(math.max(new_line_number, 1), 1)
+        end, {
+            buffer = true,
+            silent = true,
+            desc = 'Remove selected quickfix items',
+        })
     end
 })
 
