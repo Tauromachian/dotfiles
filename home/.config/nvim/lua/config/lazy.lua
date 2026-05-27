@@ -92,6 +92,9 @@ require("lazy").setup({
         'rebelot/kanagawa.nvim',
         config = function()
             vim.cmd("colorscheme kanagawa")
+            vim.keymap.set('n', '<leader>cl', "<cmd>:colorscheme kanagawa-lotus<CR>")
+            vim.keymap.set('n', '<leader>cd', "<cmd>:colorscheme kanagawa<CR>")
+            vim.keymap.set('n', '<leader>cb', "<cmd>:colorscheme kanagawa<CR>")
         end
     },
 })
