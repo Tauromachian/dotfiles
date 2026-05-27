@@ -57,7 +57,7 @@ require("lazy").setup({
 
     -- Git
     { 'lewis6991/gitsigns.nvim', event = "BufReadPre" },
-    { 'tpope/vim-fugitive',      cmd = { "Git", "G" } },
+    { 'tpope/vim-fugitive',      event = "VeryLazy" },
 
     -- Utilities
     {
