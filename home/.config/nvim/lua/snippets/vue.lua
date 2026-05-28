@@ -2,6 +2,7 @@ local ls = require('luasnip')
 local s = ls.snippet
 local i = ls.insert_node
 local t = ls.text_node
+local c = ls.choice_node
 
 local vue_scripts = {
     s("vProp", {
@@ -28,10 +29,7 @@ local vue_scripts = {
         i(2, 'lang="scss"'),
         t("></style>")
     }),
-    s("vi18n", {
-        t({ "import { useI18n } from 'vue-i18n';", '' }),
-        t('const { t } = useI18n();')
-    }),
+    s("vi18n", { t({ "import { useI18n } from 'vue-i18n';", '' }), t('const { t } = useI18n();') }),
     s("vRef", {
         t('const '),
         i(1, 'name'),
@@ -58,7 +56,7 @@ local vue_scripts = {
         t(")"),
         t({ "}", "})" }),
     }),
-    s("defineModel", {
+    s("vDefineModel", {
         t('const '),
         i(1, 'name'),
         t({ "= defineModel({", "type:" }),
@@ -76,7 +74,52 @@ local vue_scripts = {
         t({ '</template>', '' }),
         t({ '', '' }),
         i(1, '<style scoped></style>')
-    })
+    }),
+    s('vWatch', {
+        t('watch('),
+        i(1, 'name'),
+        t(', ('),
+        i(2, 'newValue'),
+        t(', '),
+        i(3, 'oldValue'),
+        t({ ') => {', '' }),
+        t('  '),
+        i(4),
+        t({ '', '})' }),
+    }),
+    s('vWatchEffect', {
+        t({ 'watchEffect(() => {', '' }),
+        t('  '),
+        i(1),
+        t({ '', '})' }),
+    }),
+    s('vProvide', {
+        t('provide('),
+        i(1, 'key'),
+        t(', '),
+        i(2, 'value'),
+        t(')')
+    }),
+    s('vInject', {
+        t('const '),
+        i(1, 'var'),
+        t(' = inject('),
+        i(2, 'injectionKey'),
+        t(', '),
+        i(3, 'defaultValue'),
+        t(")")
+    }),
+    s('vHook', {
+        c(1, {
+            t('onMounted'),
+            t('onUnmounted'),
+            t('onBeforeMount')
+        }),
+        t({ '(() => {', '' }),
+        t('  '),
+        i(2),
+        t('})')
+    }),
 }
 
 return vue_scripts
