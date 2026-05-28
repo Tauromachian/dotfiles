@@ -50,3 +50,10 @@ end
 
 # opencode
 fish_add_path /home/jose/.opencode/bin
+
+# pnpm
+set -gx PNPM_HOME "/home/jose/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
