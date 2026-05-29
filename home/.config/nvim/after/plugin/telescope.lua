@@ -28,7 +28,7 @@ require('telescope').setup {
     defaults = {
         preview = {
             filetype_hook = function(filepath, bufnr, opts)
-                local excluded = { svg = true, iml = true }
+                local excluded = { svg = true, iml = true, xml = true }
                 local ext = filepath:match("%.(%w+)$")
                 if ext and excluded[ext:lower()] then
                     require("telescope.previewers.utils").set_preview_message(
