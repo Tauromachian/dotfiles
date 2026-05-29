@@ -1,6 +1,3 @@
-local luasnip = require('luasnip')
-local cmp = require('cmp')
-
 require('luasnip.loaders.from_vscode').lazy_load()
 require('mason-lspconfig').setup({
     ensure_installed = { 'lua_ls', 'eslint', 'emmet_language_server', 'tailwindcss', 'ts_ls', 'vue_ls' },
@@ -44,44 +41,6 @@ vim.lsp.config['ts_ls']                 = {
 vim.lsp.config['emmet_language_server'] = {
     filetypes = { 'astro', 'css', 'eruby', 'html', 'htmlangular', 'htmldjango', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'typescriptreact' }
 }
-
-local function luasnip_jump(index)
-    return cmp.mapping(function(fallback)
-        if luasnip.jumpable(index) then
-            luasnip.jump(index)
-        else
-            fallback()
-        end
-    end, { 'i', 's' })
-end
-
-cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'buffer' }
-    },
-
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
-
-    -- Preselect first item from autocompletion
-    preselect = 'item',
-    completion = {
-        completeopt = 'menu,menuone,noinsert',
-    },
-
-    -- Sets simple autocompletion keybindings
-    mapping = cmp.mapping.preset.insert({
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
-        ['<Tab>'] = luasnip_jump(1),
-        ['<S-Tab>'] = luasnip_jump(-1),
-    })
-})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
