@@ -74,7 +74,6 @@ vim.api.nvim_create_autocmd('FileType', {
             desc = 'Remove quickfix item under cursor',
         })
 
-        -- Visual mode: delete all selected items
         vim.keymap.set('v', 'd', function()
             local qf_list = vim.fn.getqflist()
             local first_line = vim.fn.line('v')
