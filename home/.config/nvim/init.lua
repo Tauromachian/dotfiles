@@ -94,9 +94,7 @@ vim.api.nvim_create_autocmd('FileType', {
             vim.fn.setqflist(qf_list, 'r')
 
             -- Exit visual mode and reposition cursor
-            vim.api.nvim_feedkeys(
-                vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false
-            )
+            vim.api.nvim_input('<Esc>')
             local new_line_number = math.min(first_line, #qf_list)
             vim.fn.cursor(math.max(new_line_number, 1), 1)
         end, {
