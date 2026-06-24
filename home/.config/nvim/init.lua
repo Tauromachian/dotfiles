@@ -65,8 +65,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
                 vim.fn.setqflist(qf_list, 'r')
 
-                local new_line_number = math.min(current_line_number, #qf_list)
-                vim.fn.cursor(new_line_number, 1)
+                vim.fn.cursor(current_line_number, 1)
             end
         end, {
             buffer = true,
@@ -95,8 +94,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
             -- Exit visual mode and reposition cursor
             vim.api.nvim_input('<Esc>')
-            local new_line_number = math.min(first_line, #qf_list)
-            vim.fn.cursor(math.max(new_line_number, 1), 1)
+            vim.fn.cursor(first_line, 1)
         end, {
             buffer = true,
             silent = true,
