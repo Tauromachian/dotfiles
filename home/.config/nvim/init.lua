@@ -60,13 +60,11 @@ vim.api.nvim_create_autocmd('FileType', {
 
             local current_line_number = vim.fn.line('.')
 
-            if qf_list[current_line_number] then
-                table.remove(qf_list, current_line_number)
+            table.remove(qf_list, current_line_number)
 
-                vim.fn.setqflist(qf_list, 'r')
+            vim.fn.setqflist(qf_list, 'r')
 
-                vim.fn.cursor(current_line_number, 1)
-            end
+            vim.fn.cursor(current_line_number, 1)
         end, {
             buffer = true,
             silent = true,
