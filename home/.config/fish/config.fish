@@ -20,6 +20,15 @@ function apt
     nala $argv
 end
 
+function sudo
+    if test "$argv[1]" = "apt"
+        command sudo nala $argv[2..]
+    else
+        command sudo $argv
+    end
+end
+funcsave sudo
+
 # Auto-start tmux if available and not already inside a session
 if command -q tmux; and not set -q TMUX
     tmux
