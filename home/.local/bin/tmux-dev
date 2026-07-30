@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SESSION=$(tmux display-message -p '#{session_name}')
+WINDOW=$(tmux display-message -p '#{window_index}')
+
+tmux split-window -h -t "$SESSION:$WINDOW.1"
+tmux send-keys -t "$SESSION:$WINDOW.1" 'v .' C-m
+
+tmux new-window
+tmux send-keys -t "$SESSION:2.1" 'opencode .' C-m
+
+tmux new-window
+
+tmux select-window -t 1
+tmux select-pane -L
