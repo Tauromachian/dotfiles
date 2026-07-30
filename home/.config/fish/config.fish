@@ -1,4 +1,4 @@
-source ~/.dotfiles/dotfiles-personal/hasten-ey.fish
+source ~/.config/fish/hasten-ey.fish
 
 # Aliases
 alias v='nvim'
