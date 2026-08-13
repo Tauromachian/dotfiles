@@ -1,5 +1,5 @@
 #!/bin/bash
 
-if [ -d "dotfiles-personal/.thunderbird" ]; do
+if [ -d "dotfiles-personal/.thunderbird" ]; then
     stow "dotfiles-personal"
-done
+fi
