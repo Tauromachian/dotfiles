@@ -60,7 +60,9 @@ end
 # opencode
 fish_add_path /home/jose/.opencode/bin
 
-workmux completions fish | source
+if command -q workmux
+    workmux completions fish | source
+end
 
 # pnpm
 set -gx PNPM_HOME "/home/jose/.local/share/pnpm"
