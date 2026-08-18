@@ -50,13 +50,6 @@ fish_add_path /home/linuxbrew/.linuxbrew/bin /home/linuxbrew/.linuxbrew/sbin
 set -gx STARSHIP_SHELL fish
 starship init fish | source
 
-# fnm (Fast Node Manager)
-set fnm_path "$HOME/.local/share/fnm"
-if test -d $fnm_path
-    fish_add_path $fnm_path
-    fnm env --use-on-cd --shell fish | source
-end
-
 # opencode
 fish_add_path /home/jose/.opencode/bin
 
@@ -69,3 +62,17 @@ set -gx PNPM_HOME "/home/jose/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
+
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
