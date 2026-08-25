@@ -15,6 +15,8 @@ alias composer='podman run --rm --network host -v "$PWD:/usr/src/myapp" -w /usr/
 alias art='php artisan'
 alias art:serve='podman run --rm --network host --interactive --tty -v "$PWD:/usr/src/myapp" -w /usr/src/myapp -p 8000:8000 php:dev-env php artisan serve --host 0.0.0.0 --port 8000'
 
+alias ls='eza --long --header --icons'
+
 # apt → nala wrapper
 function apt
     nala $argv
