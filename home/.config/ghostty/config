@@ -4,6 +4,9 @@
 # reloaded while running; some only apply to new windows and others may require
 # a full restart to take effect.
 
+# config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
+# window-theme = ghostty
+
 font-size = 14
 
 font-family = CaskaydiaMono Nerd Font Mono
