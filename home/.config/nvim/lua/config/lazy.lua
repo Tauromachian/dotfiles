@@ -97,4 +97,12 @@ require("lazy").setup({
             vim.keymap.set('n', '<leader>cb', "<cmd>:colorscheme kanagawa<CR>")
         end
     },
+
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        config = function()
+            require("ibl").setup {}
+        end
+    }
 })
