@@ -1,5 +1,3 @@
-source ~/.config/fish/hasten-ey.fish
-
 # Aliases
 alias v='nvim'
 alias docker='podman'
