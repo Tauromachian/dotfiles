@@ -4,15 +4,21 @@ local i = ls.insert_node
 local t = ls.text_node
 
 local javascript = {
-    s("=>", {
-        i(1, "async "),
-        t("("),
-        i(2, 'parameter'),
+    s("async =>", {
+        t("async ("),
+        i(1, 'parameter'),
         t(")"),
         t("=>"),
-        i(3, ''),
+        i(2, ''),
     }),
-    s("=>2", {
+    s("=>", {
+        t("("),
+        i(1, 'parameter'),
+        t(")"),
+        t("=>"),
+        i(2, ''),
+    }),
+    s("const var =>", {
         t('const '),
         i(1, 'name'),
         t('='),

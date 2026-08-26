@@ -4,30 +4,30 @@ local i = ls.insert_node
 local t = ls.text_node
 
 local typescript = {
-    s('cl', {
-        t('console.log('),
-        i(1, ''),
-        t(')'),
-    }),
-    s("=>", {
-        i(1, "async "),
-        t("("),
-        i(2, 'parameter'),
+    s("async =>", {
+        t("async ("),
+        i(1, 'parameter'),
         t(")"),
         t("=>"),
-        i(3, ''),
+        i(2, ''),
     }),
-    s("=>2", {
-        i(1, 'const'),
-        t(' '),
-        i(2, 'name'),
+    s("=>", {
+        t("("),
+        i(1, 'parameter'),
+        t(")"),
+        t("=>"),
+        i(2, ''),
+    }),
+    s("const var =>", {
+        t('const '),
+        i(1, 'name'),
         t('='),
-        i(3, 'async '),
+        i(2, 'async '),
         t('('),
-        i(4, 'parameter'),
+        i(3, 'parameter'),
         t(')'),
         t('=>'),
-        i(5, ''),
+        i(4, ''),
     }),
     s("func", {
         i(1, 'export '),
@@ -48,6 +48,11 @@ local typescript = {
         t({ "= {", '' }),
         i(3, '// definition'),
         t({ '', "}" })
+    }),
+    s('cl', {
+        t('console.log('),
+        i(1, ''),
+        t(')'),
     }),
     s("cw", {
         t("console.warn("),
