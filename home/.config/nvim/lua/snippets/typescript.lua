@@ -54,6 +54,11 @@ local typescript = {
         i(1, ''),
         t(")"),
     }),
+    s("ce", {
+        t("console.warn("),
+        i(1, ''),
+        t(")"),
+    }),
 }
 
 return typescript

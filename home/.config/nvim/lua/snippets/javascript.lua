@@ -40,6 +40,11 @@ local javascript = {
         i(1, ''),
         t(")"),
     }),
+    s("ce", {
+        t("console.warn("),
+        i(1, ''),
+        t(")"),
+    }),
     s("method", {
         i(1, "async "),
         i(2, "name "),
