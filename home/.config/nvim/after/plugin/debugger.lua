@@ -1,6 +1,7 @@
 local mason_dap = require("mason-nvim-dap")
 local dap_virtual_text = require("nvim-dap-virtual-text")
 local ui = require("dapui")
+local dap = require('dap')
 
 -- Dap Virtual Text
 dap_virtual_text.setup()
@@ -16,6 +17,7 @@ mason_dap.setup({
 })
 
 ui.setup()
+vim.fn.sign_define("DapBreakpoint", { text = "󰨰" })
 
 -- Toggle ui status open or closed
 vim.keymap.set('n', "<F9>", dap.toggle_breakpoint)
