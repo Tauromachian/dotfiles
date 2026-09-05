@@ -18,4 +18,5 @@ mason_dap.setup({
 ui.setup()
 
 -- Toggle ui status open or closed
+vim.keymap.set('n', "<F9>", dap.toggle_breakpoint)
 vim.keymap.set('n', "<F5>", ui.toggle)
