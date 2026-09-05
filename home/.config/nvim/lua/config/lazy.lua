@@ -37,6 +37,18 @@ require("lazy").setup({
         }
     },
 
+    -- Debugger
+    {
+        "mfussenegger/nvim-dap",
+        event = "VeryLazy",
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "nvim-neotest/nvim-nio",
+            "jay-babu/mason-nvim-dap.nvim",
+            "theHamsta/nvim-dap-virtual-text",
+        },
+    },
+
     -- LSPs and snippets
     'neovim/nvim-lspconfig',
     { "mason-org/mason.nvim",           opts = {} },
