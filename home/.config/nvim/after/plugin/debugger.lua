@@ -16,18 +16,6 @@ mason_dap.setup({
     },
 })
 
-dap.configurations = {
-    javascript = {
-        {
-            type = "pwa-node",
-            request = "launch",
-            name = "Launch file",
-            program = "${file}",
-            cwd = "${workspaceFolder}",
-        }
-    },
-}
-
 dap.adapters['pwa-node'] = {
     type = "server",
     host = "localhost",
