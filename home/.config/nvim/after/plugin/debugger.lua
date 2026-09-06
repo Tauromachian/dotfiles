@@ -92,4 +92,5 @@ vim.fn.sign_define("DapBreakpoint", { text = "󰨰" })
 
 -- Toggle ui status open or closed
 vim.keymap.set('n', "<F9>", dap.toggle_breakpoint)
+vim.keymap.set('n', "<F10>", dap.continue)
 vim.keymap.set('n', "<F5>", ui.toggle)
