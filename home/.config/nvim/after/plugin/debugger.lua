@@ -42,6 +42,7 @@ for _, language in ipairs(js_based_languages) do
             name = "Launch file",
             program = "${file}",
             cwd = "${fileDirname}",
+            console = "integratedTerminal",
             sourceMaps = true,
             skipFiles = { "<node_internals>/**", "node_modules/**" },
         },
