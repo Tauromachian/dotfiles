@@ -37,6 +37,13 @@ local vue_scripts = {
         i(2, ""),
         t(")")
     }),
+    s("vReactive", {
+        t('const '),
+        i(1, 'name'),
+        t("= reactive({"),
+        i(2, ""),
+        t("})")
+    }),
     s("vComputed", {
         t('const '),
         i(1, 'name'),
