@@ -3,7 +3,7 @@
 # for examples
 
 PATH=$PATH:/home/jose/.yarn/bin:/home/jose/.config/.local/bin
-export EDITOR=nvim-noplugin;
+export EDITOR="nvim --noplugin";
 
 # Set Vi mode
 set -o vi
@@ -131,3 +131,36 @@ sudo() {
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(starship init bash)"
+
+# opencode
+[[ -d "$HOME/.opencode/bin" ]] && export PATH="$HOME/.opencode/bin:$PATH"
+
+# workmux
+if command -v workmux &> /dev/null; then
+  eval "$(workmux completions bash)"
+fi
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# asdf - shims + completions, mirrors fish config
+if [ -n "$ASDF_DATA_DIR" ]; then
+  _asdf_shims="$ASDF_DATA_DIR/shims"
+else
+  _asdf_shims="$HOME/.asdf/shims"
+fi
+case ":$PATH:" in
+  *":$_asdf_shims:"*) ;;
+  *) export PATH="$_asdf_shims:$PATH" ;;
+esac
+unset _asdf_shims
+# NOTE: asdf 0.20 Go rewrite has no asdf.sh; completions via brew / asdf CLI
+if [ -f "/home/linuxbrew/.linuxbrew/etc/bash_completion.d/asdf" ]; then
+  . "/home/linuxbrew/.linuxbrew/etc/bash_completion.d/asdf"
+elif command -v asdf &> /dev/null; then
+  eval "$(asdf completion bash)"
+fi
