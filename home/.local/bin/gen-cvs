@@ -1,0 +1,32 @@
+#!/usr/bin/env lua
+
+local lfs = require('lfs')
+local os = require('os')
+
+local portfolio_dir = '/home/jose/Desktop/Work/portfolio-typst'
+
+function getFilesByExtension(extension)
+    local files = {}
+
+    for entry in lfs.dir(portfolio_dir) do
+        if (entry:match(extension)) then
+            table.insert(files, entry)
+        end
+    end
+
+    return files
+end
+
+local typ_files = getFilesByExtension('typ')
+
+for _, value in ipairs(typ_files) do
+    os.execute('ASDF_TYPST_VERSION=0.15.1 asdf exec typst compile ' .. portfolio_dir .. '/' .. value)
+end
+
+local pdf_files = getFilesByExtension('pdf')
+
+for _, value in ipairs(pdf_files) do
+    os.execute('cp ' .. portfolio_dir .. '/' .. value .. ' ~/Documents/')
+end
+
+print('CVs generated successfully!')
