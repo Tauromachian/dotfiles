@@ -46,7 +46,10 @@ local function yd(args)
         if (includes(LONELY_FLAGS, args[i])) then
             cmd = cmd .. ' ' .. getCommandByFlag(args[i])
         else
-            cmd = cmd .. ' ' .. getCommandByFlag(args[i], args[i + 1])
+            cmd = cmd ..
+            ' ' ..
+            getCommandByFlag(args[i], args[i + 1]) ..
+            ' ' .. "-f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
             i = i + 1
         end
 
