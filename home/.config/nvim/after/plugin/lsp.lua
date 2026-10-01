@@ -18,7 +18,7 @@ vim.lsp.config['denols']                = {
 }
 
 vim.lsp.config['tailwindcss']           = {
-    root_markers = { 'tailwind.config.js' }
+    root_markers = { 'node_modules/tailwindcss' }
 }
 
 local vue_ls_path                       = vim.fn.expand("$MASON/packages/vue-language-server")
