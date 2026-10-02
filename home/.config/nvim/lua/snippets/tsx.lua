@@ -11,7 +11,7 @@ local tsx = {
             return 'set' .. args[1][1]:gsub('^%l', string.upper)
         end, { 1 }),
         typ = i(2, 'Type'),
-        default = i(3, 'default'),
+        default = i(3, ''),
     }))
 }
 
