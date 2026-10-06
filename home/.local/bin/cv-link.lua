@@ -1,0 +1,18 @@
+#!/usr/bin/env lua
+
+local links = {
+    'https://www.linkedin.com/in/dev-jose-garcia/',
+    'https://github.com/Tauromachian',
+    'https://www.jose-garcia.net/'
+}
+
+for index, value in ipairs(links) do
+    print(index, value)
+end
+
+local selectedNumber = io.read("n")
+
+local command = 'echo ' .. "'" .. links[selectedNumber] .. "' " .. '|' .. ' xclip -selection clipboard'
+
+os.execute(command)
+print('Copied to clipboard!')
