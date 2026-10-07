@@ -24,5 +24,6 @@ for _, value in ipairs(typ_files) do
 end
 
 os.execute('cp ' .. portfolio_dir .. '/*.pdf' .. ' ~/Documents/')
+os.execute('rm -r ' .. portfolio_dir .. '/*.pdf')
 
 print('CVs generated successfully!')
