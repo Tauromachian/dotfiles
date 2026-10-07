@@ -29,4 +29,6 @@ for _, value in ipairs(pdf_files) do
     os.execute('cp ' .. portfolio_dir .. '/' .. value .. ' ~/Documents/')
 end
 
+os.execute('rm -r *.pdf')
+
 print('CVs generated successfully!')
