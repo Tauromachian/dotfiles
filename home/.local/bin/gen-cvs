@@ -5,7 +5,7 @@ local os = require('os')
 
 local portfolio_dir = '/home/jose/Desktop/Work/portfolio-typst'
 
-function getFilesByExtension(extension)
+local function getFilesByExtension(extension)
     local files = {}
 
     for entry in lfs.dir(portfolio_dir) do
