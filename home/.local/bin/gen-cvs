@@ -23,12 +23,6 @@ for _, value in ipairs(typ_files) do
     os.execute('ASDF_TYPST_VERSION=0.15.1 asdf exec typst compile ' .. portfolio_dir .. '/' .. value)
 end
 
-local pdf_files = getFilesByExtension('pdf')
-
-for _, value in ipairs(pdf_files) do
-    os.execute('cp ' .. portfolio_dir .. '/' .. value .. ' ~/Documents/')
-end
-
-os.execute('rm -r *.pdf')
+os.execute('cp ' .. portfolio_dir .. '/*.pdf' .. ' ~/Documents/')
 
 print('CVs generated successfully!')
