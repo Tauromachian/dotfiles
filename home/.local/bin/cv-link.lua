@@ -6,6 +6,7 @@ local links = {
     'https://www.jose-garcia.net/'
 }
 
+print('Type number to select link')
 for index, value in ipairs(links) do
     print(index, value)
 end
