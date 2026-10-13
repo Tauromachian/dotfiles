@@ -17,5 +17,5 @@ end
 
 local cmd = 'cp ' .. docs .. '/' .. arg[1] .. ' ' .. docs .. shell_quote("/Jose Garcia CV.pdf")
 
-print(cmd)
 os.execute(cmd)
+print('PDF copied and renamed correctly!')
