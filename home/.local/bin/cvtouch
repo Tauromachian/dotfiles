@@ -1,0 +1,21 @@
+#!/usr/bin/env lua
+
+local docs = '/home/jose/Documents'
+
+local os = require('os')
+
+if not arg[1] then
+    print('You need to pass a pdf to this script as its argument')
+    return
+end
+
+print(arg[1])
+
+local function shell_quote(s)
+    return "'" .. s:gsub("'", "'\\''") .. "'"
+end
+
+local cmd = 'cp ' .. docs .. '/' .. arg[1] .. ' ' .. docs .. shell_quote("/Jose Garcia CV.pdf")
+
+print(cmd)
+os.execute(cmd)
