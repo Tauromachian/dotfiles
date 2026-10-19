@@ -59,7 +59,15 @@ local javascript = {
         t({ ") {", '' }),
         i(4, ""),
         t({ "", "}" }),
-    })
+    }),
+    s('fetch', fmt([[
+    const res = await fetch({url});
+    const data = await res.json();
+    {last}
+    ]], {
+        url = i(1, 'url'),
+        last = i(0)
+    }))
 }
 
 return javascript
