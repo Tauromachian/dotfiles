@@ -60,7 +60,7 @@ local typescript = {
         t(")"),
     }),
     s("ce", {
-        t("console.warn("),
+        t("console.error("),
         i(1, ''),
         t(")"),
     }),
