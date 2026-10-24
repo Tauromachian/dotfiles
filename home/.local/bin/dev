@@ -15,7 +15,8 @@ tmux select-window -t 1
 tmux select-pane -L
 
 # Server command
-
-if [[ "$1" == 'react' ||  "$1" == 'nuxt' ||  "$1" == 'vue' ||  "$1" == 'next' ]]; then
-    tmux send-keys -t "$SESSION:3.1" 'pn run dev' C-m
-fi
+case "$1" in
+    react|nuxt|vue|next)
+        tmux send-keys -t "$SESSION:3.1" 'pn run dev' C-m
+        ;;
+esac
