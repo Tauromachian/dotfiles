@@ -12,6 +12,9 @@ local tsx = {
         end, { 1 }),
         typ = i(2, 'Type'),
         default = i(3, ''),
+    })),
+    s('rUseEffect', fmt('useEffect(() => {{content}}, [{toTrack}])', {
+        toTrack = i(1, ''),
     }))
 }
 
