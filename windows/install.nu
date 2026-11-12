@@ -6,6 +6,7 @@
 
 # winget packages.
 let packages = [
+    { name: "Git", id: "Git.Git" }
     { name: "fzf", id: "junegunn.fzf" }
     { name: "ripgrep", id: "BurntSushi.ripgrep" }
     { name: "tree-sitter-cli", id: "tree-sitter.tree-sitter-cli" }
