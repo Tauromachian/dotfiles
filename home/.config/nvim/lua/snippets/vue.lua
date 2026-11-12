@@ -1,132 +1,125 @@
 local ls = require('luasnip')
 local s = ls.snippet
 local i = ls.insert_node
-local t = ls.text_node
 local c = ls.choice_node
+local t = ls.text_node
+local fmt = require('luasnip.extras.fmt').fmt
 
 local vue_scripts = {
-    s("vProp", {
-        i(1, 'name'),
-        t(":"),
-        t("{"),
-        t("type:"),
-        i(2, 'String'),
-        t(","),
-        t("default:"),
-        i(3, '""'),
-        t("}"),
-    }),
-    s("vBase", {
-        t("<script setup "),
-        i(1, 'lang="ts"'),
-        t("></script>"),
-        t({ '', '', '' }),
-        t("<template>"),
-        i(3, ""),
-        t("</template>"),
-        t({ '', '', '' }),
-        t("<style scoped "),
-        i(2, 'lang="scss"'),
-        t("></style>")
-    }),
-    s("vi18n", { t({ "import { useI18n } from 'vue-i18n';", '' }), t('const { t } = useI18n();') }),
-    s("vRef", {
-        t('const '),
-        i(1, 'name'),
-        t("= ref("),
-        i(2, ""),
-        t(")")
-    }),
-    s("vReactive", {
-        t('const '),
-        i(1, 'name'),
-        t("= reactive({"),
-        i(2, ""),
-        t("})")
-    }),
-    s("vComputed", {
-        t('const '),
-        i(1, 'name'),
-        t({ "= computed(() => {", '' }),
-        i(2, '// content'),
-        t({ '', "})" }),
-    }),
-    s("vComputed2", {
-        i(1, 'const '),
-        i(2, 'name'),
-        t({ "= computed({", "get () {", "return " }),
-        i(3, '// return'),
-        t({ '', "},", "set (val) {", "emit('update:" }),
-        i(4, "val"),
-        t("',"),
-        i(5, "val"),
-        t(")"),
-        t({ "}", "})" }),
-    }),
-    s("vDefineModel", {
-        t('const '),
-        i(1, 'name'),
-        t({ "= defineModel({", "type:" }),
-        i(2, 'String'),
-        t({ "", ",", "default:" }),
-        i(3, '""'),
-        t({ "", "})" }),
-    }),
-    s("vbasets", {
-        t({ '<script setup lang="ts">', '' }),
-        t({ '</script>', '' }),
-        t({ '', '' }),
-        t({ '<template>', '' }),
-        t({ '  <div></div>', '' }),
-        t({ '</template>', '' }),
-        t({ '', '' }),
-        i(1, '<style scoped></style>')
-    }),
-    s('vWatch', {
-        t('watch('),
-        i(1, 'name'),
-        t(', ('),
-        i(2, 'newValue'),
-        t(', '),
-        i(3, 'oldValue'),
-        t({ ') => {', '' }),
-        t('  '),
-        i(4),
-        t({ '', '})' }),
-    }),
-    s('vWatchEffect', {
-        t({ 'watchEffect(() => {', '' }),
-        t('  '),
-        i(1),
-        t({ '', '})' }),
-    }),
-    s('vProvide', {
-        t('provide('),
-        i(1, 'key'),
-        t(', '),
-        i(2, 'value'),
-        t(')')
-    }),
-    s('vInject', {
-        t('const '),
-        i(1, 'var'),
-        t(' = inject('),
-        i(2, 'injectionKey'),
-        t(', '),
-        i(3, 'defaultValue'),
-        t(")")
-    }),
-    s('vHook', {
-        c(1, {
+    s("vProp", fmt("{name}:{{type:{typ},default:{def}}}", {
+        name = i(1, 'name'),
+        typ = i(2, 'String'),
+        def = i(3, '""'),
+    })),
+    s("vBase", fmt([[
+    <script setup {setupLang}></script>
+
+    <template>
+      {tpl}
+    </template>
+
+    <style scoped {styleLang}></style>
+    ]], {
+        setupLang = i(1, 'lang="ts"'),
+        styleLang = i(2, 'lang="scss"'),
+        tpl = i(3),
+    })),
+    s("vi18n", fmt([[
+    import {{ useI18n }} from 'vue-i18n';
+    const {{ t }} = useI18n();
+    ]], {})),
+    s("vRef", fmt("const {name} = ref({val})", {
+        name = i(1, 'name'),
+        val = i(2),
+    })),
+    s("vReactive", fmt("const {name} = reactive({{{val}}})", {
+        name = i(1, 'name'),
+        val = i(2),
+    })),
+    s("vComputed", fmt([[
+    const {name} = computed(() => {{
+      {body}
+    }})
+    ]], {
+        name = i(1, 'name'),
+        body = i(2, '// content'),
+    })),
+    s("vComputed2", fmt([[
+    {const}{name} = computed({{
+      get () {{
+        return {ret}
+      }},
+      set (val) {{
+        emit('update:{key}', {val})
+      }}
+    }})
+    ]], {
+        const = i(1, 'const '),
+        name = i(2, 'name'),
+        ret = i(3, '// return'),
+        key = i(4, 'val'),
+        val = i(5, 'val'),
+    })),
+    s("vDefineModel", fmt([[
+    const {name} = defineModel({{
+      type: {typ},
+      default: {def}
+    }})
+    ]], {
+        name = i(1, 'name'),
+        typ = i(2, 'String'),
+        def = i(3, '""'),
+    })),
+    s("vbasets", fmt([[
+    <script setup lang="ts">
+    </script>
+
+    <template>
+      <div></div>
+    </template>
+
+    {style}
+    ]], {
+        style = i(1, '<style scoped></style>'),
+    })),
+    s('vWatch', fmt([[
+    watch({name}, ({newVal}, {oldVal}) => {{
+      {body}
+    }})
+    ]], {
+        name = i(1, 'name'),
+        newVal = i(2, 'newValue'),
+        oldVal = i(3, 'oldValue'),
+        body = i(4),
+    })),
+    s('vWatchEffect', fmt([[
+    watchEffect(() => {{
+      {body}
+    }})
+    ]], {
+        body = i(1),
+    })),
+    s('vProvide', fmt('provide({key}, {val})', {
+        key = i(1, 'key'),
+        val = i(2, 'value'),
+    })),
+    s('vInject', fmt('const {var} = inject({key}, {def})', {
+        var = i(1, 'var'),
+        key = i(2, 'injectionKey'),
+        def = i(3, 'defaultValue'),
+    })),
+    s('vHook', fmt([[
+    {hook}(() => {{
+      {body}
+    }})
+    ]], {
+        hook = c(1, {
             t('onMounted'),
             t('onUnmounted'),
-            t('onBeforeMount')
+            t('onBeforeMount'),
         }),
-        t({ '(() => {', '' }),
-        t('  '),
-        i(2),
-        t('})')
-    }),
+        body = i(2),
+    })),
 }
 
 return vue_scripts
