@@ -1,0 +1,10 @@
+onboarding = false
+
+[terminal]
+default_shell = 'C:\Users\jose\AppData\Local\Programs\nu\bin\nu.exe'
+# If installed globally
+# default_shell = 'C:\Program Files\nu\bin\nu.exe'
+
+[keys]
+split_vertical = ["prefix+v", "prefix+percent"]
+split_horizontal = ["prefix+minus", "prefix+double_quote"]
