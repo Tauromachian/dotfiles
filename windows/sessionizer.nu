@@ -1,0 +1,74 @@
+#!/usr/bin/env nu
+# herdr rewrite of home/.local/bin/tmux-sessionizer.
+# Fuzzy-pick a project dir with fzf, create a herdr workspace for it if needed, focus it.
+# Usage: sessionizer.nu (or sessionizer.bat on Windows)
+
+# Match an existing workspace by cwd first (exact), then by label.
+def find-workspace [workspaces: list, label: string, dir: string] {
+    let want = ($dir | path expand | str downcase)
+    for ws in $workspaces {
+        let cwd = try { $ws | get cwd | path expand | str downcase } catch { null }
+        if $cwd == $want { return $ws }
+    }
+    for ws in $workspaces {
+        let lbl = try { $ws | get label } catch { try { $ws | get name } catch { null } }
+        if $lbl == $label { return $ws }
+    }
+    null
+}
+
+def main [] {
+    if (which herdr | is-empty) {
+        error make {msg: "herdr not found on PATH"}
+    }
+    if (which fzf | is-empty) {
+        error make {msg: "fzf not found on PATH (winget install fzf)"}
+    }
+
+    let roots = [
+        ("~/Desktop/Work" | path expand)
+        ("~/Desktop/Playground" | path expand)
+        ("~" | path expand)
+    ]
+
+    # Mirror `find <roots> -mindepth 1 -maxdepth 2 -type d`.
+    let candidates = (
+        $roots
+        | where { $in | path exists }
+        | each { |r|
+            let hits1 = try { ls ($r | path join "*") | where type == dir } catch { [] }
+            let hits2 = try { ls ($r | path join "*" "*") | where type == dir } catch { [] }
+            (($hits1 | each { $in.name }) ++ ($hits2 | each { $in.name }))
+        }
+        | flatten
+        | uniq
+        | sort
+    )
+    if ($candidates | is-empty) { return }
+
+    let session = try {
+        $candidates | str join (char newline) | ^fzf | str trim
+    } catch { "" }
+    if ($session | is-empty) { return }
+
+    let session_name = ($session | path basename | str replace --all "." "_")
+
+    let workspaces = try {
+        herdr workspace list | from json | get result.workspaces
+    } catch { [] }
+
+    let existing = (find-workspace $workspaces $session_name $session)
+    let ws_id = if $existing == null {
+        herdr workspace create --cwd $session --label $session_name --no-focus | from json | get result.workspace.workspace_id
+    } else {
+        try { $existing | get workspace_id } catch { null }
+    }
+
+    if $ws_id == null {
+        # Unexpected list schema: fall back to creating fresh.
+        let created = (herdr workspace create --cwd $session --label $session_name --no-focus | from json)
+        herdr workspace focus ($created | get result.workspace.workspace_id)
+    } else {
+        herdr workspace focus $ws_id
+    }
+}
