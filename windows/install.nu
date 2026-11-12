@@ -7,6 +7,7 @@
 # winget packages.
 let packages = [
     { name: "fzf", id: "junegunn.fzf" }
+    { name: "ripgrep", id: "BurntSushi.ripgrep" }
     { name: "Neovim", id: "Neovim.Neovim" }
     { name: "Alacritty", id: "Alacritty.Alacritty" }
     { name: "Chromium", id: "Hibbiki.Chromium" }
