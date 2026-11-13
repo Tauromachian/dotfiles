@@ -5,9 +5,9 @@
 
 # Match an existing workspace by cwd first (exact), then by label.
 def find-workspace [workspaces: list, label: string, dir: string] {
-    let want = ($dir | path expand | str downcase)
+    let want = ($dir | path expand | str lowercase)
     for ws in $workspaces {
-        let cwd = try { $ws | get cwd | path expand | str downcase } catch { null }
+        let cwd = try { $ws | get cwd | path expand | str lowercase } catch { null }
         if $cwd == $want { return $ws }
     }
     for ws in $workspaces {
