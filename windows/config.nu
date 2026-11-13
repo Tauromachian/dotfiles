@@ -8,10 +8,6 @@ if $nu.is-interactive and (which herdr | is-not-empty) and ($env.HERDR_PANE_ID? 
 
 $env.config.edit_mode = 'vi'
 
-# The prompt indicators are environmental variables that represent
-# the state of the prompt
-$env.PROMPT_MULTILINE_INDICATOR = "::: "
-
 # fnm lives under ~/.local/share/fnm on Unix but %APPDATA%/fnm by default on
 # Windows. $env.HOME is often unset on Windows, so expand `~` instead.
 let fnm_path = if ("~/.local/share/fnm" | path expand | path exists) {
