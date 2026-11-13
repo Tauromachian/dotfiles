@@ -83,12 +83,11 @@ def makeSymbolicLinks [] {
 
 def installVirtualDesktopAccessor [] {
     # Pinned release; check https://github.com/Ciantic/VirtualDesktopAccessor/releases for newer.
-    # default.ahk loads the DLL from A_ScriptDir (the link's folder, not the repo),
-    # so each launch location needs its own copy.
+    # Single copy in Documents: Startup executes every file in it, so a DLL there
+    # would pop an "Open with" dialog on every login.
     let url = "https://github.com/Ciantic/VirtualDesktopAccessor/releases/download/2024-12-16-windows11/VirtualDesktopAccessor.dll"
     let dests = [
-        ($env.USERPROFILE | path join "Desktop" "VirtualDesktopAccessor.dll")
-        ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "VirtualDesktopAccessor.dll")
+        ($env.USERPROFILE | path join "Documents" "VirtualDesktopAccessor.dll")
     ]
 
     $dests | each { |dll|
