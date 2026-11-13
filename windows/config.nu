@@ -8,10 +8,6 @@ if $nu.is-interactive and (which herdr | is-not-empty) and ($env.HERDR_PANE_ID? 
 
 $env.config.edit_mode = 'vi'
 
-# Use nushell functions to define your right and left prompt
-$env.PROMPT_COMMAND = { || create_left_prompt }
-$env.PROMPT_COMMAND_RIGHT = ""
-
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
 $env.PROMPT_MULTILINE_INDICATOR = "::: "
