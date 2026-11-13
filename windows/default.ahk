@@ -4,8 +4,9 @@
 ; Settle time after switching desktops before focusing a window (ms).
 DESKTOP_SWITCH_SETTLE_MS := 50
 
-; Path to the DLL, relative to the script
-VDA_PATH := A_ScriptDir . "\VirtualDesktopAccessor.dll"
+VDA_PATH := EnvGet("USERPROFILE") . "\Documents\VirtualDesktopAccessor.dll"
+if (!FileExist(VDA_PATH))
+    VDA_PATH := A_ScriptDir . "\VirtualDesktopAccessor.dll"
 hVirtualDesktopAccessor := DllCall("LoadLibrary", "Str", VDA_PATH, "Ptr")
 
 #1:: GoToDesktop(0)
