@@ -14,17 +14,6 @@ hVirtualDesktopAccessor := DllCall("LoadLibrary", "Str", VDA_PATH, "Ptr")
     Send "!{Tab}"
 }
 
-FocusFirstWindow() {
-    Loop 20 {
-        windows := WinGetList()
-        if windows.Length > 0 {
-            WinActivate windows[1]
-            break
-        }
-        Sleep 50
-    }
-}
-
 GetForemostWindowIdOnDesktop(n) {
     ; winIDList contains a list of windows IDs ordered from the top to the bottom for each desktop.
     winIDList := WinGetList()
