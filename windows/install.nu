@@ -25,6 +25,59 @@ def already-installed [id: string] {
     | str contains ($id | str downcase)
 }
 
+def ps-quote [p: string] {
+    "'" + ($p | str replace --all "'" "''") + "'"
+}
+
+def ensure-link [target: string, source: string] {
+    let target = ($target | path expand)
+    let source = ($source | path expand)
+
+    if not ($source | path exists) {
+        print $"    source missing, skipping: ($source)"
+        return
+    }
+
+    let current = try {
+        powershell -NoProfile -Command $"((Get-Item (ps-quote $target) -ErrorAction SilentlyContinue).Target)" | str trim
+    } catch { "" }
+    if ($current | str downcase) == ($source | str downcase) {
+        print $"    already linked: ($target)"
+        return
+    }
+
+    # Move anything in the way aside (rename, never delete).
+    if ($target | path exists) {
+        let backup = $"($target).bak"
+        print $"    backing up ($target) -> ($backup)"
+        mv $target $backup
+    }
+    mkdir ($target | path dirname)
+    powershell -NoProfile -Command $"New-Item -ItemType SymbolicLink -Path (ps-quote $target) -Target (ps-quote $source) -Force | Out-Null"
+    print $"    linked ($target) -> ($source)"
+}
+
+def makeSymbolicLinks [] {
+    let home = $env.USERPROFILE
+    let links = [
+        { target: ($env.LOCALAPPDATA | path join "nvim"), source: ($home | path join ".dotfiles" "home" ".config" "nvim") }
+        { target: ($env.APPDATA | path join "nushell" "config.nu"), source: ($home | path join ".dotfiles" "windows" "config.nu") }
+        { target: ($env.APPDATA | path join "alacritty" "alacritty.toml"), source: ($home | path join ".dotfiles" "home" ".config" "alacritty" "alacritty.toml") }
+        { target: ($home | path join ".gitconfig"), source: ($home | path join ".dotfiles" "home" ".gitconfig") }
+    ]
+
+    mut failed = []
+    for link in $links {
+        try {
+            ensure-link $link.target $link.source
+        } catch { |e|
+            print $"    FAILED: ($link.target): ($e.msg)"
+            $failed = ($failed | append $link.target)
+        }
+    }
+    $failed
+}
+
 def main [] {
     if (which winget | is-empty) {
         error make {msg: "winget not found. Install App Installer from the Microsoft Store first."}
@@ -49,6 +102,9 @@ def main [] {
             }
         }
     }
+
+    print "==> Creating symbolic links..."
+    $failed = ($failed ++ (makeSymbolicLinks))
 
     if ($failed | is-not-empty) {
         print ""
