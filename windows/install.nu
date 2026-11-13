@@ -65,6 +65,7 @@ def makeSymbolicLinks [] {
         { target: ($env.APPDATA | path join "alacritty" "alacritty.toml"), source: ($home | path join ".dotfiles" "home" ".config" "alacritty" "alacritty.toml") }
         { target: ($home | path join ".gitconfig"), source: ($home | path join ".dotfiles" "home" ".gitconfig") }
         { target: ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "default.ahk"), source: ($home | path join ".dotfiles" "windows" "default.ahk") }
+        { target: ($home | path join "Desktop" "default.ahk"), source: ($home | path join ".dotfiles" "windows" "default.ahk") }
     ]
 
     mut failed = []
@@ -77,6 +78,24 @@ def makeSymbolicLinks [] {
         }
     }
     $failed
+}
+
+def installVirtualDesktopAccessor [] {
+    # Pinned release; check https://github.com/Ciantic/VirtualDesktopAccessor/releases for newer.
+    let url = "https://github.com/Ciantic/VirtualDesktopAccessor/releases/download/2024-12-16-windows11/VirtualDesktopAccessor.dll"
+    let dll = ($env.USERPROFILE | path join "Desktop" "VirtualDesktopAccessor.dll")
+    if ($dll | path exists) {
+        print "==> VirtualDesktopAccessor.dll already on Desktop, skipping."
+        return []
+    }
+    print "==> Downloading VirtualDesktopAccessor.dll to Desktop..."
+    try {
+        http get $url | save --force $dll
+        []
+    } catch { |e|
+        print $"    FAILED: VirtualDesktopAccessor.dll: ($e.msg)"
+        ["VirtualDesktopAccessor.dll"]
+    }
 }
 
 def main [] {
@@ -106,6 +125,8 @@ def main [] {
 
     print "==> Creating symbolic links..."
     $failed = ($failed ++ (makeSymbolicLinks))
+
+    $failed = ($failed ++ (installVirtualDesktopAccessor))
 
     if ($failed | is-not-empty) {
         print ""
