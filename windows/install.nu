@@ -134,7 +134,7 @@ def main [] {
     }
 
     if not (is-admin) {
-        print --stderr "ERROR: this terminal is not elevated. Creating symbolic links requires Administrator rights or Developer Mode (Settings > System > For developers). Restart the terminal as Administrator or enable Developer Mode, then rerun."
+        error make {msg: "this terminal is not elevated. Creating symbolic links requires Administrator rights or Developer Mode (Settings > System > For developers). Restart the terminal as Administrator or enable Developer Mode, then rerun."}
     }
 
     let failed_pkgs = ($packages | each { |pkg|
