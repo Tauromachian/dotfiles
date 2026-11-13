@@ -1,6 +1,9 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
+; Settle time after switching desktops before focusing a window (ms).
+DESKTOP_SWITCH_SETTLE_MS := 50
+
 ; Path to the DLL, relative to the script
 VDA_PATH := A_ScriptDir . "\VirtualDesktopAccessor.dll"
 hVirtualDesktopAccessor := DllCall("LoadLibrary", "Str", VDA_PATH, "Ptr")
@@ -46,7 +49,7 @@ GoToDesktop(index) {
 
     DllCall("VirtualDesktopAccessor\GoToDesktopNumber", "Int", index)
 
-    Sleep 50
+    Sleep DESKTOP_SWITCH_SETTLE_MS
     FocusTheForemostWindow(index)
 }
 
