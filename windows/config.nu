@@ -1,5 +1,11 @@
 alias v = nvim
 
+# Attach to herdr on interactive shells only (scripts like install.nu load this
+# config too). Skips when herdr is missing or already inside a herdr pane.
+if $nu.is-interactive and (which herdr | is-not-empty) and ($env.HERDR_PANE_ID? | is-empty) {
+    herdr
+}
+
 $env.config.edit_mode = 'vi'
 
 # Use nushell functions to define your right and left prompt
