@@ -22,8 +22,8 @@ def already-installed [id: string] {
     winget list --exact --id $id
     | complete
     | get stdout
-    | str downcase
-    | str contains ($id | str downcase)
+    | str lowercase
+    | str contains ($id | str lowercase)
 }
 
 def ps-quote [p: string] {
@@ -42,7 +42,7 @@ def ensure-link [target: string, source: string] {
     let current = try {
         powershell -NoProfile -Command $"((Get-Item (ps-quote $target) -ErrorAction SilentlyContinue).Target)" | str trim
     } catch { "" }
-    if ($current | str downcase) == ($source | str downcase) {
+    if ($current | str lowercase) == ($source | str lowercase) {
         print $"    already linked: ($target)"
         return
     }
@@ -69,16 +69,15 @@ def makeSymbolicLinks [] {
         { target: ($home | path join "Desktop" "default.ahk"), source: ($home | path join ".dotfiles" "windows" "default.ahk") }
     ]
 
-    mut failed = []
-    for link in $links {
+    $links | each { |link|
         try {
             ensure-link $link.target $link.source
+            null
         } catch { |e|
             print $"    FAILED: ($link.target): ($e.msg)"
-            $failed = ($failed | append $link.target)
+            $link.target
         }
-    }
-    $failed
+    } | compact
 }
 
 def installVirtualDesktopAccessor [] {
@@ -91,22 +90,22 @@ def installVirtualDesktopAccessor [] {
         ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "VirtualDesktopAccessor.dll")
     ]
 
-    mut failed = []
-    for dll in $dests {
+    $dests | each { |dll|
         if ($dll | path exists) {
             print $"==> VirtualDesktopAccessor.dll already present, skipping: ($dll)"
-            continue
+            null
+        } else {
+            print $"==> Downloading VirtualDesktopAccessor.dll to ($dll)..."
+            try {
+                mkdir ($dll | path dirname)
+                http get $url | save --force $dll
+                null
+            } catch { |e|
+                print $"    FAILED: ($dll): ($e.msg)"
+                $dll
+            }
         }
-        print $"==> Downloading VirtualDesktopAccessor.dll to ($dll)..."
-        try {
-            mkdir ($dll | path dirname)
-            http get $url | save --force $dll
-        } catch { |e|
-            print $"    FAILED: ($dll): ($e.msg)"
-            $failed = ($failed | append $dll)
-        }
-    }
-    $failed
+    } | compact
 }
 
 def main [] {
@@ -114,25 +113,28 @@ def main [] {
         error make {msg: "winget not found. Install App Installer from the Microsoft Store first."}
     }
 
-    mut failed = []
-
-    for pkg in $packages {
+    let failed_pkgs = ($packages | each { |pkg|
         if (already-installed $pkg.id) {
             print $"==> ($pkg.name) already installed, skipping."
-            continue
-        }
-        print $"==> Installing ($pkg.name) [($pkg.id)]..."
-        try {
-            winget install --exact --id $pkg.id --source winget --silent --accept-package-agreements --accept-source-agreements
-        } catch {
-            if (already-installed $pkg.id) {
-                print $"    ($pkg.name) showed up during install, skipping."
-            } else {
-                print $"    FAILED: ($pkg.name)"
-                $failed = ($failed | append $pkg.id)
+            null
+        } else {
+            print $"==> Installing ($pkg.name) [($pkg.id)]..."
+            try {
+                winget install --exact --id $pkg.id --source winget --silent --accept-package-agreements --accept-source-agreements
+                null
+            } catch {
+                if (already-installed $pkg.id) {
+                    print $"    ($pkg.name) showed up during install, skipping."
+                    null
+                } else {
+                    print $"    FAILED: ($pkg.name)"
+                    $pkg.id
+                }
             }
         }
-    }
+    } | compact)
+
+    mut failed = $failed_pkgs
 
     print "==> Creating symbolic links..."
     $failed = ($failed ++ (makeSymbolicLinks))
