@@ -1,4 +1,5 @@
 #Requires AutoHotkey v2.0
+#SingleInstance Force
 
 ; Path to the DLL, relative to the script
 VDA_PATH := A_ScriptDir . "\VirtualDesktopAccessor.dll"
