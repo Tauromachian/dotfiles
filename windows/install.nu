@@ -64,6 +64,7 @@ def makeSymbolicLinks [] {
         { target: ($env.APPDATA | path join "nushell" "config.nu"), source: ($home | path join ".dotfiles" "windows" "config.nu") }
         { target: ($env.APPDATA | path join "alacritty" "alacritty.toml"), source: ($home | path join ".dotfiles" "home" ".config" "alacritty" "alacritty.toml") }
         { target: ($home | path join ".gitconfig"), source: ($home | path join ".dotfiles" "home" ".gitconfig") }
+        { target: ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "default.ahk"), source: ($home | path join ".dotfiles" "windows" "default.ahk") }
     ]
 
     mut failed = []
