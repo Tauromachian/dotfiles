@@ -124,9 +124,17 @@ def installHerdr [] {
     }
 }
 
+def is-admin [] {
+    (powershell -NoProfile -Command "([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)" | str trim) == "True"
+}
+
 def main [] {
     if (which winget | is-empty) {
         error make {msg: "winget not found. Install App Installer from the Microsoft Store first."}
+    }
+
+    if not (is-admin) {
+        print --stderr "ERROR: this terminal is not elevated. Creating symbolic links requires Administrator rights or Developer Mode (Settings > System > For developers). Restart the terminal as Administrator or enable Developer Mode, then rerun."
     }
 
     let failed_pkgs = ($packages | each { |pkg|
