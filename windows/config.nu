@@ -32,5 +32,5 @@ let fnm_path = if ("~/.local/share/fnm" | path expand | path exists) {
 if $fnm_path != null {
     $env.PATH = ($env.PATH | prepend $fnm_path)
     ^fnm env --shell bash | lines | where $it starts-with export | parse 'export {key}="{value}"' | where key != PATH | transpose -r -d | load-env
-    $env.PATH = ($env.PATH | prepend ($env.FNM_MULTISHELL_PATH | path join "bin"))
+    $env.PATH = ($env.PATH | prepend ($env.FNM_MULTISHELL_PATH))
 }
