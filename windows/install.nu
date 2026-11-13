@@ -152,12 +152,12 @@ def main [] {
 
     mut failed = $failed_pkgs
 
+    $failed = ($failed ++ (installHerdr))
+
     print "==> Creating symbolic links..."
     $failed = ($failed ++ (makeSymbolicLinks))
 
     $failed = ($failed ++ (installVirtualDesktopAccessor))
-
-    $failed = ($failed ++ (installHerdr))
 
     if ($failed | is-not-empty) {
         print ""
