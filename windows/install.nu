@@ -8,7 +8,7 @@
 let packages = [
     { name: "Git", id: "Git.Git" }
     { name: "fzf", id: "junegunn.fzf" }
-    { name: "ripgrep", id: "BurntSushi.ripgrep" }
+    { name: "ripgrep", id: "BurntSushi.ripgrep.MSVC" }
     { name: "tree-sitter-cli", id: "tree-sitter.tree-sitter-cli" }
     { name: "fnm", id: "Schniz.fnm" }
     { name: "Neovim", id: "Neovim.Neovim" }
