@@ -82,20 +82,30 @@ def makeSymbolicLinks [] {
 
 def installVirtualDesktopAccessor [] {
     # Pinned release; check https://github.com/Ciantic/VirtualDesktopAccessor/releases for newer.
+    # default.ahk loads the DLL from A_ScriptDir (the link's folder, not the repo),
+    # so each launch location needs its own copy.
     let url = "https://github.com/Ciantic/VirtualDesktopAccessor/releases/download/2024-12-16-windows11/VirtualDesktopAccessor.dll"
-    let dll = ($env.USERPROFILE | path join "Desktop" "VirtualDesktopAccessor.dll")
-    if ($dll | path exists) {
-        print "==> VirtualDesktopAccessor.dll already on Desktop, skipping."
-        return []
+    let dests = [
+        ($env.USERPROFILE | path join "Desktop" "VirtualDesktopAccessor.dll")
+        ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "VirtualDesktopAccessor.dll")
+    ]
+
+    mut failed = []
+    for dll in $dests {
+        if ($dll | path exists) {
+            print $"==> VirtualDesktopAccessor.dll already present, skipping: ($dll)"
+            continue
+        }
+        print $"==> Downloading VirtualDesktopAccessor.dll to ($dll)..."
+        try {
+            mkdir ($dll | path dirname)
+            http get $url | save --force $dll
+        } catch { |e|
+            print $"    FAILED: ($dll): ($e.msg)"
+            $failed = ($failed | append $dll)
+        }
     }
-    print "==> Downloading VirtualDesktopAccessor.dll to Desktop..."
-    try {
-        http get $url | save --force $dll
-        []
-    } catch { |e|
-        print $"    FAILED: VirtualDesktopAccessor.dll: ($e.msg)"
-        ["VirtualDesktopAccessor.dll"]
-    }
+    $failed
 }
 
 def main [] {
