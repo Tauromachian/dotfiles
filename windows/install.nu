@@ -18,6 +18,17 @@ let packages = [
     { name: "GNU Make", id: "GnuWin32.Make" }
 ]
 
+# Assumes the repo is checked out at %USERPROFILE%\.dotfiles.
+let links = [
+    { target: ($env.LOCALAPPDATA | path join "nvim"), source: ($env.USERPROFILE | path join ".dotfiles" "home" ".config" "nvim") }
+    { target: ($env.APPDATA | path join "nushell" "config.nu"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "config.nu") }
+    { target: ($env.APPDATA | path join "alacritty" "alacritty.toml"), source: ($env.USERPROFILE | path join ".dotfiles" "home" ".config" "alacritty" "alacritty.toml") }
+    { target: ($env.APPDATA | path join "herdr" "config.toml"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "herdr" "config.toml") }
+    { target: ($env.USERPROFILE | path join ".gitconfig"), source: ($env.USERPROFILE | path join ".dotfiles" "home" ".gitconfig") }
+    { target: ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "default.ahk"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "default.ahk") }
+    { target: ($env.USERPROFILE | path join "Desktop" "default.ahk"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "default.ahk") }
+]
+
 def already-installed [id: string] {
     winget list --exact --id $id
     | complete
@@ -59,16 +70,6 @@ def ensure-link [target: string, source: string] {
 }
 
 def makeSymbolicLinks [] {
-    let home = $env.USERPROFILE
-    let links = [
-        { target: ($env.LOCALAPPDATA | path join "nvim"), source: ($home | path join ".dotfiles" "home" ".config" "nvim") }
-        { target: ($env.APPDATA | path join "nushell" "config.nu"), source: ($home | path join ".dotfiles" "windows" "config.nu") }
-        { target: ($env.APPDATA | path join "alacritty" "alacritty.toml"), source: ($home | path join ".dotfiles" "home" ".config" "alacritty" "alacritty.toml") }
-        { target: ($home | path join ".gitconfig"), source: ($home | path join ".dotfiles" "home" ".gitconfig") }
-        { target: ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "default.ahk"), source: ($home | path join ".dotfiles" "windows" "default.ahk") }
-        { target: ($home | path join "Desktop" "default.ahk"), source: ($home | path join ".dotfiles" "windows" "default.ahk") }
-    ]
-
     $links | each { |link|
         try {
             ensure-link $link.target $link.source
