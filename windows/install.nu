@@ -108,6 +108,22 @@ def installVirtualDesktopAccessor [] {
     } | compact
 }
 
+def installHerdr [] {
+    # No winget package exists; use the official installer.
+    if (which herdr | is-not-empty) {
+        print "==> herdr already installed, skipping."
+        return []
+    }
+    print "==> Installing herdr [official installer]..."
+    try {
+        powershell -NoProfile -ExecutionPolicy Bypass -c "irm https://herdr.dev/install.ps1 | iex"
+        []
+    } catch { |e|
+        print $"    FAILED: herdr: ($e.msg)"
+        ["herdr (https://herdr.dev/install.ps1)"]
+    }
+}
+
 def main [] {
     if (which winget | is-empty) {
         error make {msg: "winget not found. Install App Installer from the Microsoft Store first."}
@@ -140,6 +156,8 @@ def main [] {
     $failed = ($failed ++ (makeSymbolicLinks))
 
     $failed = ($failed ++ (installVirtualDesktopAccessor))
+
+    $failed = ($failed ++ (installHerdr))
 
     if ($failed | is-not-empty) {
         print ""
