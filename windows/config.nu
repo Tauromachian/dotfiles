@@ -2,15 +2,6 @@ alias v = nvim
 
 $env.config.edit_mode = 'vi'
 
-$env.STARSHIP_SHELL = "nu"
-def create_left_prompt [] {
-    if (which starship | is-not-empty) {
-        starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)'
-    } else {
-        $"(pwd) "
-    }
-}
-
 # Use nushell functions to define your right and left prompt
 $env.PROMPT_COMMAND = { || create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = ""
