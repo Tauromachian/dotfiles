@@ -48,14 +48,20 @@ def main [] {
 
     let session = try {
         $candidates | str join (char newline) | ^fzf | str trim
-    } catch { "" }
+    } catch { |e|
+        print $"fzf failed: ($e.msg)"
+        ""
+    }
     if ($session | is-empty) { return }
 
     let session_name = ($session | path basename | str replace --all "." "_")
 
     let workspaces = try {
         herdr workspace list | from json | get result.workspaces
-    } catch { [] }
+    } catch { |e|
+        print $"workspace list failed: ($e.msg)"
+        []
+    }
 
     let existing = (find-workspace $workspaces $session_name $session)
     let ws_id = if $existing == null {
