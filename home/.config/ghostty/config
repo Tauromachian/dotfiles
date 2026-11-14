@@ -7,6 +7,9 @@
 # config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
 # window-theme = ghostty
 
+theme = light:Adwaita,dark:Adwaita Dark
+window-theme = system
+
 font-size = 14
 
 font-family = CaskaydiaMono Nerd Font Mono
