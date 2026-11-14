@@ -27,6 +27,8 @@ let links = [
     { target: ($env.USERPROFILE | path join ".gitconfig"), source: ($env.USERPROFILE | path join ".dotfiles" "home" ".gitconfig") }
     { target: ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "default.ahk"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "default.ahk") }
     { target: ($env.USERPROFILE | path join "Desktop" "default.ahk"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "default.ahk") }
+    { target: ($env.USERPROFILE | path join ".local" "bin" "dev.bat"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "dev.bat") }
+    { target: ($env.USERPROFILE | path join ".local" "bin" "sessionizer.bat"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "sessionizer.bat") }
 ]
 
 def already-installed [id: string] {
@@ -79,6 +81,23 @@ def makeSymbolicLinks [] {
             $link.target
         }
     } | compact
+}
+
+def ensureUserPath [dir: string] {
+    let dir = ($dir | path expand)
+    let on_path = (powershell -NoProfile -Command "[Environment]::GetEnvironmentVariable('Path','User')" | str trim | split row ";" | each { str lowercase } | any { $in == ($dir | str lowercase) })
+    if $on_path {
+        print $"    already on user PATH: ($dir)"
+        return []
+    }
+    print $"==> Adding ($dir) to user PATH..."
+    try {
+        powershell -NoProfile -Command $"[Environment]::SetEnvironmentVariable('Path', ([Environment]::GetEnvironmentVariable('Path','User').TrimEnd(';') + ';' + (ps-quote $dir)), 'User')"
+        []
+    } catch { |e|
+        print $"    FAILED: user PATH: ($e.msg)"
+        ["user PATH"]
+    }
 }
 
 def installVirtualDesktopAccessor [] {
@@ -164,6 +183,8 @@ def main [] {
 
     print "==> Creating symbolic links..."
     $failed = ($failed ++ (makeSymbolicLinks))
+
+    $failed = ($failed ++ (ensureUserPath ($env.USERPROFILE | path join ".local" "bin")))
 
     $failed = ($failed ++ (installVirtualDesktopAccessor))
 
