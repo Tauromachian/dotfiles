@@ -32,13 +32,19 @@ def main [] {
     ]
 
     # Mirror `find <roots> -mindepth 1 -maxdepth 2 -type d`.
+    # NOTE: bare `ls $dir` only — `path join "*"` glob patterns fail on some builds,
+    # and one failing glob used to discard the whole root.
     let candidates = (
         $roots
         | where { $in | path exists }
         | each { |r|
-            let hits1 = try { ls ($r | path join "*") | where type == dir } catch { [] }
-            let hits2 = try { ls ($r | path join "*" "*") | where type == dir } catch { [] }
-            (($hits1 | each { $in.name }) ++ ($hits2 | each { $in.name }))
+            let depth1 = try {
+                ls $r | where type == dir | each { $in.name }
+            } catch { [] }
+            let depth2 = ($depth1 | each { |d|
+                try { ls $d | where type == dir | each { $in.name } } catch { [] }
+            } | flatten)
+            ($depth1 ++ $depth2)
         }
         | flatten
         | uniq
