@@ -44,7 +44,10 @@ def main [] {
         | uniq
         | sort
     )
-    if ($candidates | is-empty) { return }
+    if ($candidates | is-empty) {
+        print --stderr "sessionizer: no candidate directories found under ~/Desktop/Work, ~/Desktop/Playground, ~"
+        return
+    }
 
     let session = try {
         $candidates | str join (char newline) | ^fzf | str trim
