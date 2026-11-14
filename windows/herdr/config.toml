@@ -12,7 +12,5 @@ split_horizontal = ["prefix+minus", "prefix+double_quote"]
 [[keys.command]]
 key = "prefix+f"
 type = "popup"
-# Generic (needs nu on PATH):
-# command = 'nu "%USERPROFILE%\.dotfiles\windows\sessionizer.nu"'
 command = 'nu %USERPROFILE%\.dotfiles\windows\sessionizer.nu'
 description = "jump to project"
