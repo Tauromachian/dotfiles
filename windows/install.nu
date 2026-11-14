@@ -85,23 +85,6 @@ def makeSymbolicLinks [] {
     } | compact
 }
 
-def ensureUserPath [dir: string] {
-    let dir = ($dir | path expand)
-    let on_path = (powershell -NoProfile -Command "[Environment]::GetEnvironmentVariable('Path','User')" | str trim | split row ";" | each { str lowercase } | any { $in == ($dir | str lowercase) })
-    if $on_path {
-        print $"    already on user PATH: ($dir)"
-        return []
-    }
-    print $"==> Adding ($dir) to user PATH..."
-    try {
-        powershell -NoProfile -Command $"[Environment]::SetEnvironmentVariable('Path', ([Environment]::GetEnvironmentVariable('Path','User').TrimEnd(';') + ';' + (ps-quote $dir)), 'User')"
-        []
-    } catch { |e|
-        print $"    FAILED: user PATH: ($e.msg)"
-        ["user PATH"]
-    }
-}
-
 def installVirtualDesktopAccessor [] {
     # Pinned release; check https://github.com/Ciantic/VirtualDesktopAccessor/releases for newer.
     # Single copy in Documents: Startup executes every file in it, so a DLL there
@@ -186,7 +169,16 @@ def main [] {
     print "==> Creating symbolic links..."
     $failed = ($failed ++ (makeSymbolicLinks))
 
-    $failed = ($failed ++ (ensureUserPath ($env.USERPROFILE | path join ".local" "bin")))
+    print "==> Ensuring ~/.local/bin is on user PATH..."
+    $failed = ($failed ++ (try {
+        let path_script = ($env.USERPROFILE | path join ".dotfiles" "windows" "add-local-to-path.nu")
+        let nu_exe = if (which nu | is-not-empty) { "nu" } else { $env.LOCALAPPDATA | path join "Programs" "nu" "bin" "nu.exe" }
+        run-external $nu_exe $path_script
+        []
+    } catch { |e|
+        print $"    FAILED: user PATH: ($e.msg)"
+        ["user PATH"]
+    }))
 
     $failed = ($failed ++ (installVirtualDesktopAccessor))
 
