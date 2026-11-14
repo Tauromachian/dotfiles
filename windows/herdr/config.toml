@@ -14,5 +14,5 @@ key = "prefix+f"
 type = "popup"
 # Generic (needs nu on PATH):
 # command = 'nu "%USERPROFILE%\.dotfiles\windows\sessionizer.nu"'
-command = '"%LOCALAPPDATA%\Programs\nu\bin\nu.exe" "%USERPROFILE%\.dotfiles\windows\sessionizer.nu"'
+command = 'nu %USERPROFILE%\.dotfiles\windows\sessionizer.nu'
 description = "jump to project"
