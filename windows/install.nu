@@ -27,8 +27,10 @@ let links = [
     { target: ($env.USERPROFILE | path join ".gitconfig"), source: ($env.USERPROFILE | path join ".dotfiles" "home" ".gitconfig") }
     { target: ($env.APPDATA | path join "Microsoft" "Windows" "Start Menu" "Programs" "Startup" "default.ahk"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "default.ahk") }
     { target: ($env.USERPROFILE | path join "Desktop" "default.ahk"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "default.ahk") }
-    { target: ($env.USERPROFILE | path join ".local" "bin" "dev.bat"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "dev.bat") }
-    { target: ($env.USERPROFILE | path join ".local" "bin" "sessionizer.bat"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" "sessionizer.bat") }
+    { target: ($env.USERPROFILE | path join ".local" "bin" "dev.bat"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" ".local" "bin" "dev.bat") }
+    { target: ($env.USERPROFILE | path join ".local" "bin" "dev.nu"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" ".local" "bin" "dev.nu") }
+    { target: ($env.USERPROFILE | path join ".local" "bin" "sessionizer.bat"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" ".local" "bin" "sessionizer.bat") }
+    { target: ($env.USERPROFILE | path join ".local" "bin" "sessionizer.nu"), source: ($env.USERPROFILE | path join ".dotfiles" "windows" ".local" "bin" "sessionizer.nu") }
 ]
 
 def already-installed [id: string] {
