@@ -1,16 +1,16 @@
 #!/usr/bin/env nu
 # herdr equivalent of home/.local/bin/dev, for Nushell on Windows.
 # Usage: dev-herdr.nu [react|nuxt|vue|next]
-# Layout: editor pane split right of current pane (`v .`), `opencode` tab (`opencode .`), `dev` tab (`pn run dev` for frameworks only).
+# Layout: editor pane split left of current pane (`v .`), `opencode` tab (`opencode .`), `dev` tab (`pn run dev` for frameworks only).
 # Requires: herdr in PATH. Best run from inside a herdr pane so HERDR_TAB_ID is set.
 
 def main [framework?: string] {
     let start_tab = ($env.HERDR_TAB_ID? | default "")
 
-    # 1. Editor pane to the right of the current pane.
-    # NOTE: original tmux script runs `v .` in the current pane; here we use the
+    # 1. Editor pane to the left of the current pane.
+    # NOTE: original tmux script runs `v .` in the current (left) pane; here we use the
     # new pane so the caller's shell is left untouched.
-    let editor_pane = (herdr pane split --direction right --no-focus | from json | get result.pane.pane_id)
+    let editor_pane = (herdr pane split --direction left --no-focus | from json | get result.pane.pane_id)
     herdr pane run $editor_pane "v ."
 
     # 2. opencode tab.
