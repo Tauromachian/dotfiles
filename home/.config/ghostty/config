@@ -16,7 +16,9 @@ font-family = CaskaydiaMono Nerd Font Mono
 
 window-decoration = false
 
+keybind = clear
 keybind = ctrl+tab=text:\x1f
+keybind = ctrl+shift+,=reload_config
 
 confirm-close-surface = false
 
