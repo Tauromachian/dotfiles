@@ -70,3 +70,7 @@ if uv then
         timer:start(5000, 5000, vim.schedule_wrap(apply_theme))
     end
 end
+
+vim.keymap.set('n', '<leader>cl', "<cmd>:colorscheme kanagawa-lotus<CR>")
+vim.keymap.set('n', '<leader>cd', "<cmd>:colorscheme kanagawa<CR>")
+vim.keymap.set('n', '<leader>cb', "<cmd>:colorscheme kanagawa<CR>")
