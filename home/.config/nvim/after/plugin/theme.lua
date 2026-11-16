@@ -72,5 +72,5 @@ if uv then
 end
 
 vim.keymap.set('n', '<leader>cl', "<cmd>:colorscheme kanagawa-lotus<CR>")
-vim.keymap.set('n', '<leader>cd', "<cmd>:colorscheme kanagawa<CR>")
-vim.keymap.set('n', '<leader>cb', "<cmd>:colorscheme kanagawa<CR>")
+vim.keymap.set('n', '<leader>cd', "<cmd>:colorscheme kanagawa-wave<CR>")
+vim.keymap.set('n', '<leader>cb', "<cmd>:colorscheme kanagawa-wave<CR>")
