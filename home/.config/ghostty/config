@@ -7,7 +7,7 @@
 # config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
 # window-theme = ghostty
 
-theme = light:Adwaita,dark:Adwaita Dark
+theme = light:Kanagawa Lotus,dark:Kanagawa Wave
 window-theme = system
 
 font-size = 14
